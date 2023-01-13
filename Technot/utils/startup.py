@@ -8,7 +8,7 @@ from pathlib import Path
 from telethon import Button, functions, types, utils
 from telethon.tl.functions.channels import JoinChannelRequest, LeaveChannelRequest
 
-from Technot import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID, technoversion
+from Technot import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID, technoversion, HOST
 
 from ..helpers.Config import Config
 from ..helpers.core.logger import logging
@@ -22,16 +22,17 @@ from ..helpers.aql_helper.global_collection import (
 from ..helpers.aql_helper.globals import set_var, get_var
 from .pluginmanager import load_module
 from .tools import create_supergroup
-DYNO = bool(os.getenv("DYNO",False))
 
 LOGS = logging.getLogger("TechnoUserBot")
 cmdhr = Config.HANDLER
 
 
-if DYNO:
+if HOST == "Heroku":
     VPS_NOLOAD = ["vps"]
-else:
+elif HOST == "Local VPS":
     VPS_NOLOAD = ["heroku", "sudo"]
+else:
+  VPS_NOLOAD = ["heroku", "sudo", "vps"]
 
 
 async def setup_bot():

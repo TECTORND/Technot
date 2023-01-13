@@ -24,7 +24,7 @@ if Config.PLUGIN_CHANNEL:
                 return
             downloaded_file_name = await techno.download_media(
                 await techno.get_messages(Config.PLUGIN_CHANNEL, ids=plugin_to_install),
-                "Technot/plugins/",
+                "Technot/chnlplugins/",
             )
             path1 = Path(downloaded_file_name)
             shortname = path1.stem

@@ -2,6 +2,10 @@ from . import fonts
 from . import memeshelper as swtmemes
 from .aiohttp_helper import AioHttp
 from .utils import *
+from .core import *
+from .Config import Config
+from .sql_helpers import *
+from .. import HOST
 
 type = True
 check = 0
@@ -10,7 +14,8 @@ while type:
         from . import nsfw as useless
         from .chatbot import *
         from .functions import *
-        from .memeifyhelpers import *
+        if HOST != "github actions":
+          from .memeifyhelpers import *
         from .progress import *
         from .qhelper import process
         from .tools import *

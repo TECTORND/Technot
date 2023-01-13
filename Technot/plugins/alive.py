@@ -13,7 +13,7 @@ from telethon.errors.rpcerrorlist import (
 )
 from telethon.events import CallbackQuery
 
-from Technot import StartTime, techno, technoversion
+from Technot import StartTime, techno, technoversion, HOST
 
 from ..Config import Config
 from ..core.managers import eor
@@ -58,7 +58,7 @@ async def amireallyalive(event):
         mention=mention,
         uptime=uptime,
         telever=version.__version__,
-        technover=technoversion,
+        technover=technoversion + f"[{HOST]",
         pyver=python_version(),
         dbhealth=check_sgnirts,
         ping=ms,
@@ -126,7 +126,7 @@ async def aamjlive(event):
         mention=mention,
         uptime=uptime,
         telever=version.__version__,
-        technover=technoversion,
+        technover=technoversion + f"[{HOST}]",
         pyver=python_version(),
         dbhealth=check_sgnirts,
         ping=ms,

@@ -22,7 +22,7 @@ from ..sql_helper.globals import get_var
 bot = techno
 LOGS = logging.getLogger(__name__)
 USERID = techno.uid if Config.OWNER_ID == 0 else Config.OWNER_ID
-ALIVE_NAME = Config.ALIVE_NAME
+ALIVE_NAME = Techname()
 AUTONAME = Config.AUTONAME
 DEFAULT_BIO = Config.DEFAULT_BIO
 
@@ -36,7 +36,7 @@ thumb_image_path = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, "thumb_image.jpg"
 
 
 # mention user
-mention = f"[{Config.ALIVE_NAME}](tg://user?id={USERID})"
+mention = f"[{ALIVE_NAME}](tg://user?id={USERID})"
 hmention = f"<a href = tg://user?id={USERID}>{Config.ALIVE_NAME}</a>"
 
 
@@ -116,6 +116,14 @@ def set_key(dictionary, key, value):
     else:
         dictionary[key] = [dictionary[key], value]
 
+async def Techname():
+  a = Config.ALIVE_NAME
+  if a:
+    return a
+  else:
+    techn=await bot.get_me()
+    a = get_display_name(techn)
+    return a
 
 async def make_gif(event, reply, quality=None, fps=None):
     fps = fps or 1

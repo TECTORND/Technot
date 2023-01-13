@@ -33,41 +33,45 @@ def plug_checker(plugin):
 
 
 @techno.techno_cmd(
-    pattern="install$",
+    pattern="install ?(-f|f)?",
     command=("install", menu_category),
     info={
         "header": "To install an external plugin.",
         "description": "Reply to any external plugin(supported by Technot) to install it in your bot.",
+        "note": "if you force install any harmful plugin and you account gets hacked or banned/deleted then the TeamTechnot is not responsible for that",
+        "flags": {
+          "-f": "To force install any plugin to your TechnoBot which may be harmful"
+        },
         "usage": "{tr}install",
     },
 )
 async def install(event):
     "To install an external plugin."
+    type = event.pattern_match.group(1)
     b = 1
-    owo = event.text[9:]
     techno = await eor(event, "__Installing.__")
     if event.reply_to_msg_id:
         try:
             downloaded_file_name = (
                 await event.client.download_media(  # pylint:disable=E0602
                     await event.get_reply_message(),
-                    "./Technot/plugins/",  # pylint:disable=E0602
+                    "./Technot/extplugins/",  # pylint:disable=E0602
                 )
             )
             op = open(downloaded_file_name, "r")
             rd = op.read()
             op.close()
             try:
-                if "session" in rd:
+                if "session" in rd and type != ("f" or "-f"):
                     os.remove(downloaded_file_name)
                     await techno.edit(
-                        f"**⚠️ WARNING !!** \n\n__Replied plugin file contains some harmful codes__."
+                        f"**⚠️ WARNING !!** \n\n__Replied plugin file may contains some harmful codes__.If you still belive the sender then use `{tr}install -f` to install it."
                     )
                     return
-                elif "os.environ" in rd:
+                elif "os.environ" in rd and type != ("f" or "-f"):
                     os.remove(downloaded_file_name)
                     await techno.edit(
-                        f"**⚠️ WARNING !!** \n\n__Replied plugin file contains some harmful codes__."
+                        f"**⚠️ WARNING !!** \n\n__Replied plugin file may contains some harmful codes__.If you still belive the sender then use `{tr}install -f` to install it."
                     )
                     return
                 elif "(" not in downloaded_file_name:

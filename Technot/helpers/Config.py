@@ -13,7 +13,7 @@ except ImportError:
 class Config:
     # mandatory
     API_ID = (
-        int(sys.argv[1]) if len(sys.argv) > 1 else config("API_ID", default=6, cast=int)
+        sys.argv[1]) if len(sys.argv) > 1 else config("API_ID", default=6, cast=int)
     )
     API_HASH = (
         sys.argv[2]
@@ -22,19 +22,19 @@ class Config:
     )
     SESSION = sys.argv[3] if len(sys.argv) > 3 else config("SESSION", default=None)
     DATABASE_URL = (
-        sys.argv[2]
-        if len(sys.argv) > 2
+        sys.argv[4]
+        if len(sys.argv) > 4
         else config("DB_URL", default=None)
     )
     # extras
     BOT_TOKEN = config("BOT_TOKEN", default=None)
-    LOG_CHANNEL = config("LOG_CHANNEL", default=0, default=cast=int)
+    LOG_CHANNEL = config("LOG_CHANNEL", default=0, cast=int)
     HEROKU_APP_NAME = config("HEROKU_APP_NAME", default=None)
     HEROKU_API = config("HEROKU_API", default=None)
     BOT_USERNAME = None
     # get this value from http://www.timezoneconverter.com/cgi-bin/findzone.tzc
     TZ = config("TZ", default="Asia/Kolkata")
-    AUTONAME = config("AUTONAME", dafault=None)
+    AUTONAME = config("AUTONAME", default=None)
     # set this with required techno repo link
     UPSTREAM_REPO = config(
         "UPSTREAM_REPO", default="https://github.com/TeamTechnot/Technot"
@@ -42,23 +42,23 @@ class Config:
     EXTRA_REPO = config("EXTRA_REPO", default=None)
     if EXTRA_REPO and (EXTRA_REPO.lower() == "Yes") and not url(EXTRA_REPO):
         EXTRA_REPO = "https://github.com/TeamTechnot/Plugins"
-    ADDONS = config("ADDONS", dafault=False)
+    ADDONS = config("ADDONS", default=False)
     # Set this value with group id of private group(can be found this value by .id)
-    PRIVATE_GROUP_BOT_API_ID = int(config("PRIVATE_GROUP_BOT_API_ID") or 0)
+    PRIVATE_GROUP_BOT_API_ID = config("PRIVATE_GROUP_BOT_API_ID", default=0, cast=int)
     # Set this value same as PRIVATE_GROUP_BOT_API_ID if you need pmgaurd
-    PRIVATE_GROUP_ID = int(config("PRIVATE_GROUP_ID") or 0)
+    PRIVATE_GROUP_ID = config("PRIVATE_GROUP_ID", default=0, cast=int)
     # Set this value for working of fban/unfban/superfban/superunfban cmd
-    FBAN_GROUP_ID = int(config("FBAN_GROUP_ID") or 0)
+    FBAN_GROUP_ID = config("FBAN_GROUP_ID", default=0, cast=int)
     # set this value with channel id of private channel use full for .frwd cmd
-    PRIVATE_CHANNEL_BOT_API_ID = int(config("PRIVATE_CHANNEL_BOT_API_ID") or 0)
+    PRIVATE_CHANNEL_BOT_API_ID = config("PRIVATE_CHANNEL_BOT_API_ID", default=0, cast=int)
     # for heroku plugin you can get this value from https://dashboard.heroku.com/account
     API_KEY = config("API_KEY", default=None)
     # set this with same app name you given for heroku
     APP_NAME = config("APP_NAME", default=None)
     # Owner id to show profile link of given id as owner
-    OWNER_ID = int(config("OWNER_ID") or 0)
+    OWNER_ID = config("OWNER_ID" default=0, cast=int))
     # set this with group id so it keeps notifying about your tagged messages or pms
-    PM_LOGGER_GROUP_ID = int(
+    PM_LOGGER_GROUP_ID = 
         config("PM_LOGGER_GROUP_ID")
         or config("PM_LOGGR_BOT_API_ID")
         or 0
@@ -66,7 +66,7 @@ class Config:
 
     # Custom vars for Technot
     # set this will channel id of your custom plugins
-    PLUGIN_CHANNEL = int(config("PLUGIN_CHANNEL") or 0)
+    PLUGIN_CHANNEL = config("PLUGIN_CHANNEL", default=0, cast=int)
     # set this value with your required name for telegraph plugin
     TELEGRAPH_SHORT_NAME = config("TELEGRAPH_SHORT_NAME", default="technouserbot")
     # for custom thumb image set this with your required thumb telegraoh link
@@ -165,12 +165,12 @@ class Config:
     COUNTRY = str(config("COUNTRY", default=""))
     SPOTIFY_CLIENT_ID = config("SPOTIFY_CLIENT_ID", default=None)
     SPOTIFY_CLIENT_SECRET = config("SPOTIFY_CLIENT_SECRET", default=None)
-    TZ_NUMBER = int(config("TZ_NUMBER", default=1))
+    TZ_NUMBER = config("TZ_NUMBER", default=1, cast=int)
     # For updater plugin
     UPSTREAM_REPO_BRANCH = config("UPSTREAM_REPO_BRANCH", default="master")
     # dont touch this at all
     SUDO_USERS: Set[int] = set()
-    TECHNOUBLOGO = None
+    TECHNOTLOGO = None
     BOTLOG = False
     BOTLOG_CHATID = 0
-    EXTRA_REPOBRANCH = config("EXTRA_REPOBRANCH", default="main"
+    EXTRA_REPOBRANCH = config("EXTRA_REPOBRANCH", default="main")

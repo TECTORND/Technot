@@ -27,7 +27,7 @@ technoversion = __version__
 
 def find_host():
     if os.getenv("DYNO"):
-        return "heroku"
+        return "Heroku"
     if os.getenv("RAILWAY_STATIC_URL"):
         return "Railway"
     if os.getenv("OKTETO_TOKEN"):
