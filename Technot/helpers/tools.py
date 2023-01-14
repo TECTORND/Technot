@@ -1,8 +1,5 @@
 import aiohttp
-from Technot import TECHOST
 from html_telegraph_poster import TelegraphPoster
-
-HOST=TECHOST
 
 try:
     from PIL import Image, ImageDraw, ImageFont
