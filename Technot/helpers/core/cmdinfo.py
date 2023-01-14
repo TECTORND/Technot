@@ -1,6 +1,6 @@
 from typing import Dict, List, Union
 
-from .utils.extdl import install_pip
+from ..utils.extdl import install_pip
 
 try:
     from urlextract import URLExtract
