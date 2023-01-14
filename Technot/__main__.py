@@ -1,8 +1,7 @@
 import sys
 
 import Technot
-from Technot import BOTLOG_CHATID, PM_LOGGER_GROUP_ID
-from . import HOST
+from Technot import BOTLOG_CHATID, PM_LOGGER_GROUP_ID, TECHOST
 
 from .helpers.Config import Config
 from .helpers.core.logger import logging
@@ -33,7 +32,7 @@ async def extrarepo():
             Config.EXTRA_REPO, Config.EXTRA_REPOBRANCH, "xtraplugins"
         )
 
-if HOST == "github actions":
+if TECHOST == "github actions":
   os.remove("plugins/memify.py")
   os.remove("helpers/memeifyhelpers.py")
 try:
