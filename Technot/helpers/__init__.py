@@ -4,7 +4,7 @@ from .aiohttp_helper import AioHttp
 from .utils import *
 from .core import *
 from .Config import Config
-from .sql_helpers import *
+from .sql_helper import *
 from .. import HOST
 
 type = True
