@@ -5,7 +5,7 @@ from .utils import *
 from .core import *
 from .Config import Config
 from .sql_helper import *
-from .. import HOST
+from .. import TECHOST
 
 type = True
 check = 0
@@ -14,7 +14,7 @@ while type:
         from . import nsfw as useless
         from .chatbot import *
         from .functions import *
-        if HOST != "github actions":
+        if TECHOST != "github actions":
           from .memeifyhelpers import *
         from .progress import *
         from .qhelper import process
