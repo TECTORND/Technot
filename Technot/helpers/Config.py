@@ -16,7 +16,7 @@ except ImportError:
 
 class Config(object):
     # mandatory
-    API_ID = ((
+    APP_ID = ((
         sys.argv[1]) if len(sys.argv) > 1 else config("API_ID", default=6, cast=int)
     )
     API_HASH = (
