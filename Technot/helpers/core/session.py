@@ -6,10 +6,8 @@ from telethon.sessions import StringSession
 from ..Config import Config
 from .client import TechnoClient
 from Technot.version import __version__
-from . import logging
 
 loop = None
-LOGS = logging.getLogger("Technot")
 
 if Config.SESSION:
     session = StringSession(str(Config.SESSION))
