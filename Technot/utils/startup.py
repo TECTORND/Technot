@@ -27,9 +27,9 @@ LOGS = logging.getLogger("TechnoUserBot")
 cmdhr = Config.HANDLER
 
 
-if HOST == "Heroku":
+if TECHOST == "Heroku":
     VPS_NOLOAD = ["vps"]
-elif HOST == "Local VPS":
+elif TECHOST == "Local VPS":
     VPS_NOLOAD = ["heroku", "sudo"]
 else:
   VPS_NOLOAD = ["heroku", "sudo", "vps"]
