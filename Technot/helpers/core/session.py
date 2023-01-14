@@ -3,7 +3,7 @@ import sys
 from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
 from telethon.sessions import StringSession
 
-from ..helpers.Config import Config
+from ..Config import Config
 from .client import TechnoClient
 from Technot.version import __version__
 from . import logging
