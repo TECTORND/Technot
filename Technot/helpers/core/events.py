@@ -8,7 +8,7 @@ from telethon.tl.types import (
     MessageMediaWebPage,
 )
 
-from ..helpers.Config import Config
+from ..Config import Config
 from .managers import eor
 
 
