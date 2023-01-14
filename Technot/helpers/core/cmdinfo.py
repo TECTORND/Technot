@@ -8,7 +8,7 @@ except ModuleNotFoundError:
     install_pip("urlextract")
     from urlextract import URLExtract
 
-from ..helpers.Config import Config
+from ..Config import Config
 
 extractor = URLExtract()
 
