@@ -62,10 +62,9 @@ class Config(object):
     # Owner id to show profile link of given id as owner
     OWNER_ID = config("OWNER_ID", default=0, cast=int)
     # set this with group id so it keeps notifying about your tagged messages or pms
-    PM_LOGGER_GROUP_ID = 
-        config("PM_LOGGER_GROUP_ID")
-        or config("PM_LOGGR_BOT_API_ID")
-        or 0
+    PM_LOGGER_GROUP_ID = (
+        config("PM_LOGGER_GROUP_ID", default=0, cast=int)
+        or config("PM_LOGGR_BOT_API_ID", default=0, cast=int)
     )
 
     # Custom vars for Technot
