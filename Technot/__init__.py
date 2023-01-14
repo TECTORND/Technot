@@ -44,7 +44,7 @@ def find_host():
         return "Koyeb"
     return "Local VPS"
     
-HOST=find_host()
+TECHOST=find_host()
 
 def close_connection(*_):
     print("Closing Userbot connection.")
