@@ -40,7 +40,7 @@ def find_host():
         return "termux"
     if os.getenv("FLY_APP_NAME"):
         return "fly.io"
-    if os.environs.get("ENV")=="True"
+    if os.environs.get("ENV")=="True":
         return "Koyeb"
     return "Local VPS"
     
