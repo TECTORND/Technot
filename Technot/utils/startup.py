@@ -8,7 +8,7 @@ from pathlib import Path
 from telethon import Button, functions, types, utils
 from telethon.tl.functions.channels import JoinChannelRequest, LeaveChannelRequest
 
-from Technot import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID, technoversion, HOST
+from Technot import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID, technoversion, TECHOST
 
 from ..helpers.Config import Config
 from ..helpers.core.logger import logging
