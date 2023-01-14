@@ -20,10 +20,10 @@ from telethon.errors import (
     MessageNotModifiedError,
 )
 
-from ..helpers.Config import Config
-from .utils.events import checking
-from .utils.format import paste_message
-from .utils.utils import runcmd
+from ..Config import Config
+from ..utils.events import checking
+from ..utils.format import paste_message
+from ..utils.utils import runcmd
 from ..sql_helper.globals import get_var
 from . import BOT_INFO, CMD_INFO, GRP_INFO, LOADED_CMDS, PLG_INFO
 from .cmdinfo import _format_about
