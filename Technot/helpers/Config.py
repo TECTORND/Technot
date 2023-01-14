@@ -1,5 +1,9 @@
 import sys
+import os
+from typing import Set
 
+from telethon.tl.types import ChatBannedRights
+from validators.url import url
 from decouple import config
 
 try:
@@ -10,9 +14,9 @@ except ImportError:
     pass
 
 
-class Config:
+class Config(object):
     # mandatory
-    API_ID = (
+    API_ID = ((
         sys.argv[1]) if len(sys.argv) > 1 else config("API_ID", default=6, cast=int)
     )
     API_HASH = (
@@ -56,7 +60,7 @@ class Config:
     # set this with same app name you given for heroku
     APP_NAME = config("APP_NAME", default=None)
     # Owner id to show profile link of given id as owner
-    OWNER_ID = config("OWNER_ID" default=0, cast=int))
+    OWNER_ID = config("OWNER_ID", default=0, cast=int)
     # set this with group id so it keeps notifying about your tagged messages or pms
     PM_LOGGER_GROUP_ID = 
         config("PM_LOGGER_GROUP_ID")
@@ -151,7 +155,7 @@ class Config:
     LOAD = []
     # warn mode for anti flood
     ANTI_FLOOD_WARN_MODE = ChatBannedRights(
-        until_date=None, default=view_messages=None, default=send_messages=True
+        until_date=None, view_messages=None, send_messages=True
     )
     CHROME_BIN = config("CHROME_BIN", default="/app/.apt/usr/bin/google-chrome")
     CHROME_DRIVER = config(
