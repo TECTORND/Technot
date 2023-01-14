@@ -1,7 +1,7 @@
 import sys
 
 import Technot
-from Technot import BOTLOG_CHATID, PM_LOGGER_GROUP_ID, TECHOST
+from Technot import BOTLOG_CHATID, PM_LOGGER_GROUP_ID
 
 from .helpers.Config import Config
 from .helpers.core.logger import logging
