@@ -14,8 +14,6 @@ while type:
         from .qhelper import process
         from .tools import *
         from .utils import _format, _technotools, _technoutils
-        if HOST != "github actions":
-          from .memeifyhelpers import *
 
         break
     except ModuleNotFoundError as e:
