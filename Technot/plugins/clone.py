@@ -3,7 +3,7 @@ import html
 from telethon.tl import functions
 from telethon.tl.functions.users import GetFullUserRequest
 
-from ..Config import Config
+from ..helpers.Config import Config
 from . import (
     ALIVE_NAME,
     BOTLOG,

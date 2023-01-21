@@ -4,7 +4,7 @@ from telethon.tl import types
 
 from Technot import techno
 
-from ..core.managers import eor
+from ..helpers.core.managers import eor
 from ..helpers import reply_id
 
 menu_category = "extra"

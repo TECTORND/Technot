@@ -3,7 +3,7 @@ import re
 
 from Technot import techno
 
-from ..core.managers import eor
+from ..helpers.core.managers import eor
 from . import fonts
 
 menu_category = "fun"

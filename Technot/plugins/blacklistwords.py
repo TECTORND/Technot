@@ -4,8 +4,8 @@ from telethon.utils import get_display_name
 
 from Technot import techno
 
-from ..core.managers import eor
-from ..sql_helper import blacklist_sql as sql
+from ..helpers.core.managers import eor
+from ..helpers.sql_helper import blacklist_sql as sql
 from ..utils import is_admin
 
 menu_category = "admin"

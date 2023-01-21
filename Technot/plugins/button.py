@@ -7,7 +7,7 @@ import re
 
 from telethon import Button
 
-from ..Config import Config
+from ..helpers.Config import Config
 from ..helpers.functions.functions import make_inline
 from . import eod, techno, reply_id
 

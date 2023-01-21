@@ -12,10 +12,10 @@ from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
 
 from Technot import HEROKU_APP, UPSTREAM_REPO_URL, techno
 
-from ..Config import Config
-from ..core.logger import logging
-from ..core.managers import eod, eor
-from ..sql_helper.global_collection import (
+from ..helpers.Config import Config
+from ..helpers.core.logger import logging
+from ..helpers.core.managers import eod, eor
+from ..helpers.sql_helper.global_collection import (
     add_to_collectionlist,
     del_keyword_collectionlist,
     get_collectionlist_items,

@@ -5,8 +5,8 @@ from telethon.utils import get_display_name
 
 from Technot import techno
 
-from ..core.managers import eor
-from ..sql_helper.filters_sql import (
+from ..helpers.core.managers import eor
+from ..helpers.sql_helper.filters_sql import (
     add_filter,
     get_filters,
     remove_all_filters,

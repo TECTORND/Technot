@@ -4,10 +4,10 @@ from asyncio import sleep
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 
 from .. import techno
-from ..core.logger import logging
-from ..core.managers import eod, eor
+from ..helpers.core.logger import logging
+from ..helpers.core.managers import eod, eor
 from ..helpers.utils import _format, get_user_from_event
-from ..sql_helper import broadcast_sql as sql
+from ..helpers.sql_helper import broadcast_sql as sql
 from . import BOTLOG, BOTLOG_CHATID
 
 menu_category = "tools"

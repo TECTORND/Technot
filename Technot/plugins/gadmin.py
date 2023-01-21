@@ -14,12 +14,12 @@ from telethon.utils import get_display_name
 
 from Technot import techno
 
-from ..core.managers import eod, eor
+from ..helpers.core.managers import eod, eor
 from ..helpers.utils import _format
 from ..helpers.utils.events import get_user_from_event
-from ..sql_helper import gban_sql_helper
-from ..sql_helper.globals import get_var
-from ..sql_helper.mute_sql import is_muted, mute, unmute
+from ..helpers.sql_helper import gban_sql_helper
+from ..helpers.sql_helper.globals import get_var
+from ..helpers.sql_helper.mute_sql import is_muted, mute, unmute
 from . import BOTLOG, BOTLOG_CHATID, admin_groups, gban_pic, mention
 
 menu_category = "admin"

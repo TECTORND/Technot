@@ -5,10 +5,10 @@ from telethon.tl.functions.contacts import UnblockRequest as unblock
 
 from Technot import BOTLOG, BOTLOG_CHATID, techno
 
-from ..core.logger import logging
-from ..core.managers import eod, eor
+from ..helpers.core.logger import logging
+from ..helpers.core.managers import eod, eor
 from ..helpers.utils import _format, get_user_from_event, reply_id
-from ..sql_helper.global_collectionjson import add_collection, get_collection
+from ..helpers.sql_helper.global_collectionjson import add_collection, get_collection
 
 LOGS = logging.getLogger(__name__)
 FBAN_GROUP_ID = Config.FBAN_GROUP_ID

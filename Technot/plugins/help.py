@@ -2,9 +2,9 @@ from telethon import functions
 
 from Technot import techno
 
-from ..Config import Config
-from ..core import CMD_INFO, GRP_INFO, PLG_INFO
-from ..core.managers import eod, eor
+from ..helpers.Config import Config
+from ..helpers.core import CMD_INFO, GRP_INFO, PLG_INFO
+from ..helpers.core.managers import eod, eor
 from ..helpers.utils import reply_id
 
 cmdprefix = Config.HANDLER

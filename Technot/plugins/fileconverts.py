@@ -37,8 +37,8 @@ from telethon.utils import get_attributes
 
 from Technot import techno
 
-from ..Config import Config
-from ..core.managers import eod, eor
+from ..helpers.Config import Config
+from ..helpers.core.managers import eod, eor
 from ..helpers import media_type, progress, thumb_from_audio
 from ..helpers.functions import (
     convert_toimage,

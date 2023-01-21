@@ -16,9 +16,9 @@ from telethon.tl.functions.users import GetFullUserRequest
 
 from Technot import techno
 
-from ..Config import Config
-from ..core.logger import logging
-from ..sql_helper.globals import get_var
+from ..helpers.Config import Config
+from ..helpers.core.logger import logging
+from ..helpers.sql_helper.globals import get_var
 from . import BOTLOG, BOTLOG_CHATID, eor
 
 LOGS = logging.getLogger(__name__)

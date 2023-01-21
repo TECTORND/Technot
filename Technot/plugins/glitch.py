@@ -5,7 +5,7 @@ from PIL import Image
 
 from Technot import techno
 
-from ..core.managers import eod
+from ..helpers.core.managers import eod
 from ..helpers.utils import _technotools, _technoutils, reply_id
 
 menu_category = "fun"

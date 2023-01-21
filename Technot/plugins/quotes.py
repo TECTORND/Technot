@@ -3,8 +3,8 @@ import random
 
 from Technot import techno
 
-from ..core.logger import logging
-from ..core.managers import eod, eor
+from ..helpers.core.logger import logging
+from ..helpers.core.managers import eod, eor
 from ..helpers import swtmemes
 from ..helpers.functions import random_quote, search_quotes
 from ..helpers.utils import parse_pre

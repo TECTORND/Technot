@@ -27,11 +27,11 @@ from telethon.tl.types import (
 
 from Technot import techno
 
-from ..core.managers import eod, eor
+from ..helpers.core.managers import eod, eor
 from ..helpers.functions import animator, crop_and_divide
 from ..helpers.tools import media_type
 from ..helpers.utils import _technotools
-from ..sql_helper.globals import get_var
+from ..helpers.sql_helper.globals import get_var
 
 menu_category = "fun"
 

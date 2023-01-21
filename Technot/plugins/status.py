@@ -5,8 +5,8 @@ from telethon.tl import functions
 
 from Technot import techno
 
-from ..core.managers import eod, eor
-from ..sql_helper.globals import set_var, get_var
+from ..helpers.core.managers import eod, eor
+from ..helpers.sql_helper.globals import set_var, get_var
 
 menu_category = "utils"
 

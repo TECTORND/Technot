@@ -2,7 +2,7 @@
 ```python3
 from Technot import techno
 
-from ..core.managers import eod, eor
+from ..helpers.core.managers import eod, eor
 
 menu_category="extra"
 ```
@@ -12,7 +12,7 @@ This below one is Sample format of making plugin
 ```python3
 from Technot import techno
 
-from ..core.managers import eod, eor
+from ..helpers.core.managers import eod, eor
 
 menu_category="extra"
 

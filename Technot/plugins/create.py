@@ -1,8 +1,8 @@
 from telethon.tl import functions
 
 from .. import techno
-from ..Config import Config
-from ..core.managers import eod, eor
+from ..helpers.Config import Config
+from ..helpers.core.managers import eod, eor
 from ..utils.tools import create_supergroup
 
 menu_category = "tools"

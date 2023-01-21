@@ -18,7 +18,7 @@ from telethon.utils import get_display_name
 
 from Technot import techno
 
-from ..core.managers import eod, eor
+from ..helpers.core.managers import eod, eor
 from ..helpers import convert_tosticker, media_type, process
 from ..helpers.utils import _technotools, get_user_from_event, reply_id
 

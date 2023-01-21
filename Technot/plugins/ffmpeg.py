@@ -8,8 +8,8 @@ from datetime import datetime
 
 from Technot import techno
 
-from ..Config import Config
-from ..core.managers import eod, eor
+from ..helpers.Config import Config
+from ..helpers.core.managers import eod, eor
 from ..helpers import (
     _technotools,
     fileinfo,

@@ -8,8 +8,8 @@ from telethon.events import ChatAction
 from telethon.tl.types import ChannelParticipantsAdmins
 from telethon.utils import get_display_name
 
-from ..Config import Config
-from ..sql_helper.gban_sql_helper import gbanned, is_gbanned
+from ..helpers.Config import Config
+from ..helpers.sql_helper.gban_sql_helper import gbanned, is_gbanned
 from ..utils import is_admin
 from . import BOTLOG, BOTLOG_CHATID, eor, techno, logging, spamwatch
 

@@ -18,7 +18,7 @@ from telethon.tl.types import (
 
 from Technot import techno
 
-from ..core.managers import eod, eor
+from ..helpers.core.managers import eod, eor
 from ..helpers.utils import reply_id
 from . import BOTLOG, BOTLOG_CHATID
 

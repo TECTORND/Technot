@@ -3,7 +3,7 @@ import asyncio
 from telethon.tl.functions.channels import EditBannedRequest
 from telethon.tl.types import ChatBannedRights
 
-from ..sql_helper import antiflood_sql as sql
+from ..helpers.sql_helper import antiflood_sql as sql
 from ..utils import is_admin
 from . import eor, techno
 

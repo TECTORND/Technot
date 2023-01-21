@@ -4,10 +4,10 @@ import urllib
 from PIL import Image, ImageDraw, ImageFont
 from telethon.tl.functions.users import GetFullUserRequest
 
-from ..core.managers import eod, eor
+from ..helpers.core.managers import eod, eor
 from ..helpers.functions import deEmojify, higlighted_text
 from ..helpers.tools import async_searcher, text_set
-from ..sql_helper.globals import set_var, get_var
+from ..helpers.sql_helper.globals import set_var, get_var
 from . import BOTLOG, BOTLOG_CHATID, techno, reply_id
 
 menu_category = "tools"

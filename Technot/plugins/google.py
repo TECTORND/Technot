@@ -14,8 +14,8 @@ from telegraph import Telegraph, exceptions, upload_file
 
 from Technot import techno
 
-from ..Config import Config
-from ..core.managers import eod, eor
+from ..helpers.Config import Config
+from ..helpers.core.managers import eod, eor
 from ..helpers.functions import deEmojify
 from ..helpers.utils import reply_id
 from . import BOTLOG, BOTLOG_CHATID
@@ -237,9 +237,9 @@ from telegraph import Telegraph, exceptions, upload_file
 
 from Technot import techno
 
-from ..Config import Config
-from ..core.logger import logging
-from ..core.managers import eor
+from ..helpers.Config import Config
+from ..helpers.core.logger import logging
+from ..helpers.core.managers import eor
 
 LOGS = logging.getLogger(__name__)
 menu_category = "utils"

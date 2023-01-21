@@ -10,7 +10,7 @@ from telethon.tl.types import MessageMediaPhoto
 
 from Technot import techno
 
-from ..core.managers import eod, eor
+from ..helpers.core.managers import eod, eor
 from ..helpers import media_type
 from ..helpers.functions import dotify
 from ..helpers.utils import _technotools

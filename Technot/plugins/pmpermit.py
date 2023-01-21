@@ -7,15 +7,15 @@ from telethon.events import CallbackQuery
 from telethon.utils import get_display_name
 
 from Technot import techno
-from Technot.core.logger import logging
+from Technot.helpers.core.logger import logging
 
-from ..Config import Config
-from ..core.managers import eod, eor
+from ..helpers.Config import Config
+from ..helpers.core.managers import eod, eor
 from ..helpers.utils import _format, get_user_from_event, reply_id
-from ..sql_helper import global_collectionjson as sql
-from ..sql_helper import global_list as sqllist
-from ..sql_helper import pmpermit_sql
-from ..sql_helper.globals import set_var, del_var, get_var
+from ..helpers.sql_helper import global_collectionjson as sql
+from ..helpers.sql_helper import global_list as sqllist
+from ..helpers.sql_helper import pmpermit_sql
+from ..helpers.sql_helper.globals import set_var, del_var, get_var
 from . import mention
 
 

@@ -6,7 +6,7 @@ import requests
 
 from Technot import techno
 
-from ..core.managers import eod, eor
+from ..helpers.core.managers import eod, eor
 from ..helpers.utils import reply_id
 
 menu_category = "fun"

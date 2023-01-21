@@ -8,7 +8,7 @@ import speedtest
 
 from Technot import techno
 
-from ..core.managers import eor
+from ..helpers.core.managers import eor
 from ..helpers.utils import reply_id
 
 menu_category = "utils"

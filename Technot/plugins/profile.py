@@ -9,9 +9,9 @@ from telethon.tl.types import Channel, Chat, InputPhoto, User
 
 from Technot import techno
 
-from ..Config import Config
-from ..core.logger import logging
-from ..core.managers import eod, eor
+from ..helpers.Config import Config
+from ..helpers.core.logger import logging
+from ..helpers.core.managers import eod, eor
 
 LOGS = logging.getLogger(__name__)
 menu_category = "utils"

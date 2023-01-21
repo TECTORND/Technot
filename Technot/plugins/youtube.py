@@ -23,9 +23,9 @@ from yt_dlp.utils import (
     XAttrMetadataError,
 )
 
-from ..core import pool
-from ..core.logger import logging
-from ..core.managers import eod, eor
+from ..helpers.core import pool
+from ..helpers.core.logger import logging
+from ..helpers.core.managers import eod, eor
 from ..helpers import progress, reply_id
 from ..helpers.functions import delete_conv
 from ..helpers.functions.utube import _mp3Dl, get_yt_video_id, get_ytthumb, ytsearch

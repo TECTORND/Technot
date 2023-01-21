@@ -4,14 +4,14 @@ from time import sleep
 
 from Technot import techno
 
-from ..core.logger import logging
-from ..core.managers import eor
-from ..sql_helper.global_collection import (
+from ..helpers.core.logger import logging
+from ..helpers.core.managers import eor
+from ..helpers.sql_helper.global_collection import (
     add_to_collectionlist,
     del_keyword_collectionlist,
     get_collectionlist_items,
 )
-from ..sql_helper.globals import set_var, del_var, get_var
+from ..helpers.sql_helper.globals import set_var, del_var, get_var
 from . import BOTLOG, BOTLOG_CHATID, HEROKU_APP
 
 LOGS = logging.getLogger(__name__)

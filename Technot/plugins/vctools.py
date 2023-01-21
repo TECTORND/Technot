@@ -7,8 +7,8 @@ from telethon.tl.functions.phone import InviteToGroupCallRequest as invitetovc
 
 from Technot import techno
 
-from ..core.logger import logging
-from ..core.managers import eod, eor
+from ..helpers.core.logger import logging
+from ..helpers.core.managers import eod, eor
 
 LOGS = logging.getLogger(__name__)
 

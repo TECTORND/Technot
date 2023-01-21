@@ -13,7 +13,7 @@ from ..helpers.core.logger import logging
 from ..helpers.core.session import techno
 from ..helpers.utils.format import paste_message
 from ..helpers.utils.utils import runcmd
-from ..helpers.aql_helper.globals import get_var
+from ..helpers.sql_helper.globals import get_var
 
 LOGS = logging.getLogger(__name__)
 

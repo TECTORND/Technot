@@ -1,7 +1,7 @@
 import signal
 import sys
 import time
-
+import os
 import heroku3
 
 from .helpers.Config import Config
@@ -44,7 +44,7 @@ def find_host():
         return "Koyeb"
     return "Local VPS"
     
-TECHOST=find_host()
+HOST=find_host()
 
 def close_connection(*_):
     print("Closing Userbot connection.")

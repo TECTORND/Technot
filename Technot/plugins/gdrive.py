@@ -22,13 +22,13 @@ from googleapiclient.http import MediaFileUpload, MediaIoBaseDownload
 from telethon import events
 
 from Technot import techno
-from Technot.core.logger import logging
+from Technot.helpers.core.logger import logging
 
-from ..Config import Config
-from ..core.managers import eod, eor
+from ..helpers.Config import Config
+from ..helpers.core.managers import eod, eor
 from ..helpers import CancelProcess, humanbytes, progress, time_formatter
 from ..helpers.utils import _format
-from ..sql_helper import google_drive_sql as helper
+from ..helpers.sql_helper import google_drive_sql as helper
 from . import BOTLOG, BOTLOG_CHATID, TMP_DOWNLOAD_DIRECTORY
 
 LOGS = logging.getLogger(__name__)

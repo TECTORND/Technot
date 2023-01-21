@@ -1,6 +1,6 @@
 from Technot import techno
 
-from ..core.managers import eod, eor
+from ..helpers.core.managers import eod, eor
 from ..helpers.utils import _technoutils, parse_pre, yaml_format
 
 menu_category = "tools"

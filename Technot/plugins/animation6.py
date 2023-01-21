@@ -1,8 +1,8 @@
 import asyncio
 
 from .. import techno
-from ..core.logger import logging
-from ..core.managers import eor
+from ..helpers.core.logger import logging
+from ..helpers.core.managers import eor
 from . import mention
 
 menu_category = "useless"

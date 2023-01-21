@@ -8,8 +8,8 @@ from validators.url import url
 
 from Technot import techno
 
-from ..Config import Config
-from ..core.managers import eor
+from ..helpers.Config import Config
+from ..helpers.core.managers import eor
 from . import reply_id
 
 menu_category = "utils"

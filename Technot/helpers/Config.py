@@ -1,9 +1,5 @@
 import sys
-import os
-from typing import Set
 
-from telethon.tl.types import ChatBannedRights
-from validators.url import url
 from decouple import config
 
 try:
@@ -14,9 +10,9 @@ except ImportError:
     pass
 
 
-class Config(object):
+class Config:
     # mandatory
-    APP_ID = ((
+    API_ID = ((
         sys.argv[1]) if len(sys.argv) > 1 else config("API_ID", default=6, cast=int)
     )
     API_HASH = (

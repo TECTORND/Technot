@@ -9,7 +9,7 @@ from telethon.errors.rpcerrorlist import UserNotParticipantError, YouBlockedUser
 from telethon.tl.functions.channels import GetFullChannelRequest
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 
-from ..core.managers import eod, eor
+from ..helpers.core.managers import eod, eor
 from ..helpers import media_type
 from ..helpers.utils import _technoutils, reply_id
 from . import techno

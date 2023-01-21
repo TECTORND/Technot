@@ -8,7 +8,7 @@ from telethon.tl.types import ChannelParticipantsAdmins, ChatAdminRights
 
 from Technot import techno
 
-from ..core.managers import eod, eor
+from ..helpers.core.managers import eod, eor
 from ..helpers.utils import get_user_from_event
 from . import ALIVE_NAME
 

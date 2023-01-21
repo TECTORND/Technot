@@ -5,7 +5,7 @@ from prettytable import PrettyTable
 
 from Technot import techno
 
-from ..core.managers import eod, eor
+from ..helpers.core.managers import eod, eor
 from ..helpers.progress import humanbytes
 from ..helpers.tools import media_type
 from ..helpers.utils import _format

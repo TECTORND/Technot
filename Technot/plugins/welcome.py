@@ -2,11 +2,11 @@
 from telethon import events
 
 from Technot import techno
-from Technot.core.logger import logging
+from Technot.helpers.core.logger import logging
 
-from ..core.managers import eod, eor
-from ..sql_helper.globals import set_var, del_var, get_var
-from ..sql_helper.welcome_sql import (
+from ..helpers.core.managers import eod, eor
+from ..helpers.sql_helper.globals import set_var, del_var, get_var
+from ..helpers.sql_helper.welcome_sql import (
     add_welcome_setting,
     get_current_welcome_settings,
     rm_welcome_setting,

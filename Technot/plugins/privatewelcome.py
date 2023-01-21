@@ -4,9 +4,9 @@ from telethon import events
 
 from Technot import techno
 
-from ..core.managers import eor
-from ..sql_helper import pmpermit_sql as pmpermit_sql
-from ..sql_helper.welcomesql import (
+from ..helpers.core.managers import eor
+from ..helpers.sql_helper import pmpermit_sql as pmpermit_sql
+from ..helpers.sql_helper.welcomesql import (
     addwelcome_setting,
     getcurrent_welcome_settings,
     rmwelcome_setting,

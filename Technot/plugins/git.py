@@ -10,9 +10,9 @@ from telethon.errors.rpcerrorlist import BotMethodInvalidError as dedbot
 
 from Technot import techno
 
-from ..Config import Config
-from ..core.logger import logging
-from ..core.managers import eod, eor
+from ..helpers.Config import Config
+from ..helpers.core.logger import logging
+from ..helpers.core.managers import eod, eor
 from ..helpers.utils import reply_id
 from . import reply_id
 

@@ -4,9 +4,9 @@ from telethon.utils import get_display_name
 
 from Technot import techno
 
-from ..core.managers import eod, eor
+from ..helpers.core.managers import eod, eor
 from ..helpers import get_user_from_event, rs_client
-from ..sql_helper.chatbot_sql import (
+from ..helpers.sql_helper.chatbot_sql import (
     addai,
     get_all_users,
     get_users,
@@ -15,7 +15,7 @@ from ..sql_helper.chatbot_sql import (
     remove_all_users,
     remove_users,
 )
-from ..sql_helper.globals import get_var
+from ..helpers.sql_helper.globals import get_var
 
 menu_category = "fun"
 

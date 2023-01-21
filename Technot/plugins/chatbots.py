@@ -7,8 +7,8 @@ from telethon.utils import get_display_name
 
 from Technot import techno
 
-from ..core.managers import eod, eor
-from ..sql_helper.schatbot_sql import (
+from ..helpers.core.managers import eod, eor
+from ..helpers.sql_helper.schatbot_sql import (
     saddecho,
     sget_all_echos,
     sget_echos,

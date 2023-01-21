@@ -10,13 +10,13 @@ import spamwatch as spam_watch
 from validators.url import url
 
 from .. import *
-from ..Config import Config
-from ..core.logger import logging
-from ..core.managers import eod, eor
-from ..core.session import techno
+from ..helpers.Config import Config
+from ..helpers.core.logger import logging
+from ..helpers.core.managers import eod, eor
+from ..helpers.core.session import techno
 from ..helpers import *
 from ..helpers.utils import _format, _technotools, _technoutils, install_pip, reply_id
-from ..sql_helper.globals import get_var
+from ..helpers.sql_helper.globals import get_var
 
 # =================== CONSTANT ===================
 bot = techno

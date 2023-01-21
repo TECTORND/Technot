@@ -6,6 +6,7 @@ from telethon.sessions import StringSession
 from ..Config import Config
 from .client import TechnoClient
 from Technot.version import __version__
+from Technot.utils import chkbot
 
 loop = None
 
@@ -29,6 +30,8 @@ try:
 except Exception as e:
     print(f"SESSION - {e}")
     sys.exit()
+
+techno.loop.run_until_complete(chkbot())
 
 techno.tgbot = tgbot = TechnoClient(
     session="TechnoTgbot",

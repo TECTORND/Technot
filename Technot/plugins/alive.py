@@ -13,13 +13,13 @@ from telethon.errors.rpcerrorlist import (
 )
 from telethon.events import CallbackQuery
 
-from Technot import StartTime, techno, technoversion, TECHOST
+from Technot import StartTime, techno, technoversion, HOST
 
-from ..Config import Config
-from ..core.managers import eor
+from ..helpers.Config import Config
+from ..helpers.core.managers import eor
 from ..helpers.functions import check_data_base_heal_th, get_readable_time, technoalive
 from ..helpers.utils import reply_id
-from ..sql_helper.globals import get_var
+from ..helpers.sql_helper.globals import get_var
 from . import mention
 
 menu_category = "utils"
@@ -58,7 +58,7 @@ async def amireallyalive(event):
         mention=mention,
         uptime=uptime,
         telever=version.__version__,
-        technover=technoversion + f"[{TECHOST]",
+        technover=technoversion + f"[{HOST]",
         pyver=python_version(),
         dbhealth=check_sgnirts,
         ping=ms,

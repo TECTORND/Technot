@@ -11,8 +11,8 @@ from telethon.utils import get_display_name
 
 from Technot import techno
 
-from ..Config import Config
-from ..core.managers import eor
+from ..helpers.Config import Config
+from ..helpers.core.managers import eor
 from ..helpers.utils import get_user_from_event, reply_id
 from . import ALIVE_NAME, mention
 

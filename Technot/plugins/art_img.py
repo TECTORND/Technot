@@ -8,7 +8,7 @@ import os
 
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
-from ..core.managers import eod, eor
+from ..helpers.core.managers import eod, eor
 from ..helpers.functions import clippy
 from . import _technotools, convert_toimage, techno, mention, reply_id
 

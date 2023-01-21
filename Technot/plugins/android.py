@@ -6,7 +6,7 @@ from requests import get
 
 from Technot import techno
 
-from ..core.managers import eod, eor
+from ..helpers.core.managers import eod, eor
 
 menu_category = "extra"
 

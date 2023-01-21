@@ -3,9 +3,9 @@ import random
 import time
 from datetime import datetime
 
-from ..core.managers import eor
+from ..helpers.core.managers import eor
 from ..helpers.functions import get_readable_time
-from ..sql_helper.globals import get_var
+from ..helpers.sql_helper.globals import get_var
 from . import StartTime, techno, mention
 
 menu_category = "tools"

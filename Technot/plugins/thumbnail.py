@@ -6,8 +6,8 @@ from PIL import Image
 
 from Technot import techno
 
-from ..Config import Config
-from ..core.managers import eor
+from ..helpers.Config import Config
+from ..helpers.core.managers import eor
 from ..helpers.utils import _technotools
 
 menu_category = "utils"

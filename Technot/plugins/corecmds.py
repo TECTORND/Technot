@@ -2,7 +2,7 @@ import os
 from datetime import datetime
 from pathlib import Path
 
-from ..Config import Config
+from ..helpers.Config import Config
 from ..utils import load_module, remove_plugin
 from . import (
     CMD_HELP,

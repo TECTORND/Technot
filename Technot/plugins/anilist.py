@@ -16,7 +16,7 @@ from telegraph import exceptions, upload_file
 
 from Technot import techno
 
-from ..core.managers import eod, eor
+from ..helpers.core.managers import eod, eor
 from ..helpers import media_type, time_formatter
 from ..helpers.functions import (
     airing_query,

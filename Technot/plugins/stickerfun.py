@@ -10,7 +10,7 @@ from telethon.tl.types import InputMessagesFilterDocument
 
 from Technot import techno
 
-from ..core.managers import eor
+from ..helpers.core.managers import eor
 from ..helpers.functions import deEmojify, hide_inlinebot, soft_deEmojify, waifutxt
 from ..helpers.utils import reply_id
 

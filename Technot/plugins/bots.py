@@ -4,7 +4,7 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl import functions
 
 from .. import techno
-from ..core.managers import eod, eor
+from ..helpers.core.managers import eod, eor
 
 telegraph = Telegraph()
 mee = telegraph.create_account(short_name="yohohehe")

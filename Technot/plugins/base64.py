@@ -7,8 +7,8 @@ from subprocess import run as runapp
 
 from Technot import techno
 
-from ..Config import Config
-from ..core.managers import eod, eor
+from ..helpers.Config import Config
+from ..helpers.core.managers import eod, eor
 from ..helpers import progress
 from ..helpers.tools import media_type
 

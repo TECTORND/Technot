@@ -21,7 +21,7 @@ from .functions.utube import (
     result_formatter,
     ytsearch_data,
 )
-from ..plugins import ALIVE_NAME, USERID, Techno_grp, mention
+from ...plugins import ALIVE_NAME, USERID, Techno_grp, mention
 from ..sql_helper.globals import get_var
 from . import CMD_INFO, GRP_INFO, PLG_INFO, check_owner
 from .logger import logging

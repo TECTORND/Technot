@@ -4,7 +4,7 @@ import asyncio
 
 from Technot import techno
 
-from ..core.managers import eor
+from ..helpers.core.managers import eor
 from ..helpers.utils import _format
 from . import ALIVE_NAME
 

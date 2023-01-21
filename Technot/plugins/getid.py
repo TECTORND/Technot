@@ -1,9 +1,9 @@
 from telethon.utils import pack_bot_file_id
 
 from Technot import techno
-from Technot.core.logger import logging
+from Technot.helpers.core.logger import logging
 
-from ..core.managers import eod, eor
+from ..helpers.core.managers import eod, eor
 
 menu_category = "utils"
 

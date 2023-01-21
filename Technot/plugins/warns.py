@@ -2,8 +2,8 @@ import html
 
 from Technot import techno
 
-from ..core.managers import eor
-from ..sql_helper import warns_sql as sql
+from ..helpers.core.managers import eor
+from ..helpers.sql_helper import warns_sql as sql
 
 menu_category = "admin"
 

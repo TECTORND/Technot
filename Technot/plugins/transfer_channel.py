@@ -7,7 +7,7 @@ from telethon.tl import functions
 
 from Technot import techno
 
-from ..Config import Config
+from ..helpers.Config import Config
 
 menu_category = "utils"
 

@@ -1,7 +1,7 @@
 from asyncio import sleep
 
 from Technot import techno
-from Technot.core.logger import logging
+from Technot.helpers.core.logger import logging
 
 menu_category = "tools"
 LOGS = logging.getLogger(__name__)

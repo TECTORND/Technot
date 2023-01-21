@@ -9,9 +9,9 @@ from telethon.utils import get_display_name
 
 from Technot import techno
 
-from ..core.managers import eod, eor
+from ..helpers.core.managers import eod, eor
 from ..helpers.utils import _format
-from ..sql_helper.locks_sql import get_locks, is_locked, update_lock
+from ..helpers.sql_helper.locks_sql import get_locks, is_locked, update_lock
 from ..utils import is_admin
 from . import BOTLOG, get_user_from_event
 

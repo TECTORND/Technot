@@ -20,7 +20,7 @@ from telethon.tl.types import (
 from telethon.utils import add_surrogate, del_surrogate
 
 from Technot import techno
-from Technot.core.logger import logging
+from Technot.helpers.core.logger import logging
 
 LOGS = logging.getLogger(__name__)
 

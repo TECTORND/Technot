@@ -12,9 +12,9 @@ from telethon.utils import get_display_name
 
 from Technot import techno
 
-from ..Config import Config
-from ..core.logger import logging
-from ..core.managers import eod, eor
+from ..helpers.Config import Config
+from ..helpers.core.logger import logging
+from ..helpers.core.managers import eod, eor
 from ..helpers.functions import delete_conv
 from . import techno, mention, reply_id
 

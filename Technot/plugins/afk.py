@@ -5,11 +5,11 @@ from telethon.tl import functions, types
 
 from Technot import techno
 
-from ..core.logger import logging
-from ..core.managers import eod, eor
+from ..helpers.core.logger import logging
+from ..helpers.core.managers import eod, eor
 from ..helpers.tools import media_type
 from ..helpers.utils import _format
-from ..sql_helper.globals import get_var
+from ..helpers.sql_helper.globals import get_var
 from . import BOTLOG, BOTLOG_CHATID
 
 menu_category = "utils"

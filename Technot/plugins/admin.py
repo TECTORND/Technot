@@ -21,13 +21,13 @@ from telethon.utils import get_display_name
 
 from Technot import techno
 
-from ..core.data import _sudousers_list
-from ..core.logger import logging
-from ..core.managers import eod, eor
+from ..helpers.core.data import _sudousers_list
+from ..helpers.core.logger import logging
+from ..helpers.core.managers import eod, eor
 from ..helpers import media_type
 from ..helpers.utils import _format, get_user_from_event
-from ..sql_helper.globals import get_var
-from ..sql_helper.mute_sql import is_muted, mute, unmute
+from ..helpers.sql_helper.globals import get_var
+from ..helpers.sql_helper.mute_sql import is_muted, mute, unmute
 from . import BOTLOG, BOTLOG_CHATID, ban_pic, demote_pic, mute_pic, promote_pic
 
 # =================== STRINGS ============

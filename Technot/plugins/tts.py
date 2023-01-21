@@ -11,7 +11,7 @@ from gtts import gTTS
 
 from Technot import techno
 
-from ..core.managers import eod, eor
+from ..helpers.core.managers import eod, eor
 from . import deEmojify, reply_id
 
 menu_category = "utils"
