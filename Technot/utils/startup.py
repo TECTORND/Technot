@@ -20,6 +20,7 @@ from ..helpers.sql_helper.global_collection import (
     del_keyword_collectionlist,
     get_item_collectionlist,
 )
+from helpers.functions.functions import chlang
 from ..helpers.sql_helper.globals import setgvar, getgvar
 from .pluginmanager import load_module
 from .tools import create_supergroup

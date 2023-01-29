@@ -5,7 +5,6 @@ from typing import Set
 
 from telethon.tl.types import ChatBannedRights
 from validators.url import url
-from .sql_helper.globals import getgvar, setgvar, delgvar
 
 try:
     from dotenv import load_dotenv
@@ -184,7 +183,9 @@ class Config(object):
 
 
 def get_var(variable):
-  if Config.variable != (0 or None):
+  from .sql_helper.globals import getgvar
+  import os
+  if os.getenv(variable) != (0 or None):
     return Config.variable
   elif getgvar(variable) != (None or 0):
     return getgvar(variable)
@@ -197,17 +198,18 @@ def set_var(var, value):
   from dotenv import set_key
 
   set_key(
-    dotenv_path: ./.env,
-    key_to_set: var,
-    value_to_set: value,
+    dotenv_path="./.env",
+    key_to_set=var,
+    value_to_set=value,
     )
 
 def del_var(var):
+  from .sql_helper.globals import getgvar, delgvar
   from dotenv import unset_key
   if Config.variable != (0 or None):
     unset_key(
-      dotenv_path: ./.env,
-      key_to_set: var,
+      dotenv_path="./.env",
+      key_to_unset=var,
       )
 
   elif getgvar(var) != (None or 0):
