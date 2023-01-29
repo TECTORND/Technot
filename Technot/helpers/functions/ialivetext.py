@@ -11,7 +11,6 @@ from .utils import get_readable_time
 Heroku = heroku3.from_key(Config.API_KEY)
 heroku_api = "https://api.heroku.com"
 
-DYNO = bool(os.environ.get("DYNO", False))
 
 # UniBorg Telegram UseRBot
 # Copyright (C) 2020 @UniBorg
@@ -25,6 +24,7 @@ DYNO = bool(os.environ.get("DYNO", False))
 
 
 def check_data_base_heal_th():
+    from Technot import HOST
     # https://stackoverflow.com/a/41961968
     is_database_working = False
     output = "No Database is set"
@@ -83,7 +83,7 @@ async def technoalive(StartTime):
             math.floor(App[0]["quota_used"] * 100 / quota)
         AppHours = math.floor(AppQuotaUsed / 60)
         AppMinutes = math.floor(AppQuotaUsed % 60)
-        if DYNO:
+        if HOST=="Heroku":
             dyno = f"{AppHours}h {AppMinutes}m/{hours}h {minutes}m"
         else:
             dyno = uptime

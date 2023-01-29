@@ -1,2 +1,1 @@
-Technot
-
+# Don't delete this folder

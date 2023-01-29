@@ -12,7 +12,7 @@ from ..helpers import reply_id, time_formatter
 from ..helpers.utils import _format
 from ..helpers.sql_helper.bot_blacklists import check_is_black_list, get_all_bl_users
 from ..helpers.sql_helper.bot_starters import del_starter_from_db, get_all_starters
-from ..helpers.sql_helper.globals import set_var, del_var, get_var
+from ..helpers.sql_helper.globals import setgvar, delgvar, getgvar
 from . import BOTLOG, BOTLOG_CHATID
 from .botmanagers import (
     ban_user_from_bot,
@@ -262,12 +262,12 @@ async def ban_antiflood(event):
     "To enable or disable bot antiflood."
     input_str = event.pattern_match.group(1)
     if input_str == "on":
-        if get_var("bot_antif") is not None:
+        if getgvar("bot_antif") is not None:
             return await eod(event, "`Bot Antiflood was already enabled.`")
-        set_var("bot_antif", True)
+        setgvar("bot_antif", True)
         await eod(event, "`Bot Antiflood Enabled.`")
     elif input_str == "off":
-        if get_var("bot_antif") is None:
+        if getgvar("bot_antif") is None:
             return await eod(event, "`Bot Antiflood was already disabled.`")
-        del_var("bot_antif")
+        delgvar("bot_antif")
         await eod(event, "`Bot Antiflood Disabled.`")

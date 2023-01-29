@@ -5,7 +5,7 @@ from Technot import techno
 from Technot.helpers.core.logger import logging
 
 from ..helpers.core.managers import eod, eor
-from ..helpers.sql_helper.globals import set_var, del_var, get_var
+from ..helpers.sql_helper.globals import setgvar, delgvar, getgvar
 from ..helpers.sql_helper.welcome_sql import (
     add_welcome_setting,
     get_current_welcome_settings,
@@ -26,7 +26,7 @@ async def _(event):  # sourcery no-metrics
         and (event.user_joined or event.user_added)
         and not (await event.get_user()).bot
     ):
-        if get_var("clean_welcome") is None:
+        if getgvar("clean_welcome") is None:
             try:
                 await event.client.delete_messages(event.chat_id, cws.previous_welcome)
             except Exception as e:
@@ -202,15 +202,15 @@ async def del_welcome(event):
     "To turn off or turn on of deleting previous welcome message."
     input_str = event.pattern_match.group(1)
     if input_str == "on":
-        if get_var("clean_welcome") is None:
+        if getgvar("clean_welcome") is None:
             return await eod(event, "__Already it was turned on.__")
-        del_var("clean_welcome")
+        delgvar("clean_welcome")
         return await eod(
             event,
             "__From now on previous welcome message will be deleted and new welcome message will be sent.__",
         )
-    if get_var("clean_welcome") is None:
-        set_var("clean_welcome", "false")
+    if getgvar("clean_welcome") is None:
+        setgvar("clean_welcome", "false")
         return await eod(
             event, "__From now on previous welcome message will not be deleted .__"
         )

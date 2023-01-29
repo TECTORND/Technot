@@ -42,16 +42,20 @@ def plug_checker(plugin):
         "flags": {
           "-f": "To force install any plugin to your TechnoBot which may be harmful"
         },
-        "usage": "{tr}install",
+        "usage": [
+          "{tr}install",
+          "{tr}install -f",
+          ]
     },
 )
 async def install(event):
     "To install an external plugin."
     type = event.pattern_match.group(1)
     b = 1
-    techno = await eor(event, "__Installing.__")
+    techno = await eor(event, "__Installing .__")
     if event.reply_to_msg_id:
         try:
+            os.makedir("./Technot/extplugins")
             downloaded_file_name = (
                 await event.client.download_media(  # pylint:disable=E0602
                     await event.get_reply_message(),
@@ -86,10 +90,10 @@ async def install(event):
                             string += "  •  `" + i
                             string += "`\n"
                             if b == 1:
-                                a = "__Installing..__"
+                                a = "__Installing . .__"
                                 b = 2
                             else:
-                                a = "__Installing...__"
+                                a = "__Installing . . .__"
                                 b = 1
                             await techno.edit(a)
                         return await techno.edit(

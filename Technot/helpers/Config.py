@@ -1,6 +1,11 @@
 import sys
-
+import os
 from decouple import config
+from typing import Set
+
+from telethon.tl.types import ChatBannedRights
+from validators.url import url
+from .sql_helper.globals import getgvar, setgvar, delgvar
 
 try:
     from dotenv import load_dotenv
@@ -10,7 +15,9 @@ except ImportError:
     pass
 
 
-class Config:
+class Config(object):
+    LOGGER = True
+
     # mandatory
     API_ID = ((
         sys.argv[1]) if len(sys.argv) > 1 else config("API_ID", default=6, cast=int)
@@ -28,10 +35,11 @@ class Config:
     )
     # extras
     BOT_TOKEN = config("BOT_TOKEN", default=None)
-    LOG_CHANNEL = config("LOG_CHANNEL", default=0, cast=int)
     HEROKU_APP_NAME = config("HEROKU_APP_NAME", default=None)
     HEROKU_API = config("HEROKU_API", default=None)
     BOT_USERNAME = None
+    # get your language code from https://cloud.google.com/translate/docs/languages
+    TECHNO_LANG = config("TECHNO_LANG", default="en")
     # get this value from http://www.timezoneconverter.com/cgi-bin/findzone.tzc
     TZ = config("TZ", default="Asia/Kolkata")
     AUTONAME = config("AUTONAME", default=None)
@@ -173,3 +181,35 @@ class Config:
     BOTLOG = False
     BOTLOG_CHATID = 0
     EXTRA_REPOBRANCH = config("EXTRA_REPOBRANCH", default="main")
+
+
+def get_var(variable):
+  if Config.variable != (0 or None):
+    return Config.variable
+  elif getgvar(variable) != (None or 0):
+    return getgvar(variable)
+  else:
+    return
+
+def set_var(var, value):
+  if var not in Config:
+    return
+  from dotenv import set_key
+
+  set_key(
+    dotenv_path: ./.env,
+    key_to_set: var,
+    value_to_set: value,
+    )
+
+def del_var(var):
+  from dotenv import unset_key
+  if Config.variable != (0 or None):
+    unset_key(
+      dotenv_path: ./.env,
+      key_to_set: var,
+      )
+
+  elif getgvar(var) != (None or 0):
+    delgvar(var)
+

@@ -12,7 +12,7 @@ from ..helpers.core.managers import eod, eor
 from ..helpers.utils import get_user_from_event, mentionuser
 from ..helpers.sql_helper import global_collectionjson as sql
 from ..helpers.sql_helper import global_list as sqllist
-from ..helpers.sql_helper.globals import set_var, del_var, get_var
+from ..helpers.sql_helper.globals import setgvar, delgvar, getgvar
 
 menu_category = "tools"
 
@@ -48,9 +48,9 @@ async def chat_blacklist(event):
     input_str = event.pattern_match.group(1)
     sudousers = _sudousers_list()
     if input_str == "on":
-        if get_var("sudoenable") is not None:
+        if getgvar("sudoenable") is not None:
             return await eod(event, "__Sudo is already enabled.__")
-        set_var("sudoenable", "true")
+        setgvar("sudoenable", "true")
         text = "__Enabled sudo successfully.__\n"
         if len(sudousers) != 0:
             text += (
@@ -66,8 +66,8 @@ async def chat_blacklist(event):
             event,
             text,
         )
-    if get_var("sudoenable") is not None:
-        del_var("sudoenable")
+    if getgvar("sudoenable") is not None:
+        delgvar("sudoenable")
         text = "__Disabled sudo successfully.__"
         if len(sudousers) != 0:
             text += (

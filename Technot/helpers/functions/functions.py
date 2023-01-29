@@ -21,8 +21,8 @@ from PIL import Image, ImageColor, ImageDraw, ImageFont, ImageOps
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.contacts import UnblockRequest as unblock
 
-from ..Config import Config
-from ..sql_helper.globals import get_var
+from ..Config import Config, get_var
+from ..sql_helper.globals import getgvar
 from ..resources.states import states
 
 imdb = IMDb()
@@ -92,7 +92,7 @@ async def covidindia(state):
 
 
 async def age_verification(event, reply_to_id):
-    ALLOW_NSFW = get_var("ALLOW_NSFW") or "False"
+    ALLOW_NSFW = getgvar("ALLOW_NSFW") or "False"
     if ALLOW_NSFW.lower() == "true":
         return False
     results = await event.client.inline_query(
@@ -246,6 +246,19 @@ async def getTranslate(text, **kwargs):
             await sleep(0.1)
     return result
 
+def chlang(text):
+    if not get_var("TECHNO_LANG"):
+        return
+    lang = Translator()
+    tolg = get_var("TECHNO_LANG")
+    try:
+        glang = lang.translate(text, dest=tolg)
+        out = glang.text
+        return out
+    except exception as e:
+        grp = get_var("PRIVATE_GROUP_BOT_API_ID")
+        techno.send_message(grp, f"#ERROR Unable to change your TechnoBot Language. \n{e}\n To know your language code visit [here](https://cloud.google.com/translate/docs/languages)")
+        return text
 
 def reddit_thumb_link(preview, thumb=None):
     for i in preview:

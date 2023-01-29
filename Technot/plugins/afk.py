@@ -9,7 +9,7 @@ from ..helpers.core.logger import logging
 from ..helpers.core.managers import eod, eor
 from ..helpers.tools import media_type
 from ..helpers.utils import _format
-from ..helpers.sql_helper.globals import get_var
+from ..helpers.sql_helper.globals import getgvar
 from . import BOTLOG, BOTLOG_CHATID
 
 menu_category = "utils"
@@ -140,7 +140,7 @@ async def on_afk(event):  # sourcery no-metrics
         if event.is_private:
             return
         hmm = await event.get_chat()
-        if get_var("AFKFWD") is None:
+        if getgvar("AFKFWD") is None:
             return False
         full = None
         try:

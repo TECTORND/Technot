@@ -31,7 +31,7 @@ from ..helpers.core.managers import eod, eor
 from ..helpers.functions import animator, crop_and_divide
 from ..helpers.tools import media_type
 from ..helpers.utils import _technotools
-from ..helpers.sql_helper.globals import get_var
+from ..helpers.sql_helper.globals import getgvar
 
 menu_category = "fun"
 
@@ -68,11 +68,11 @@ def verify_cond(owoarray, text):
 
 
 def pack_name(userid, pack, is_anim, is_vid):
-    if get_var("CUSTOM_STICKER_SETNAME") is not None:
+    if getgvar("CUSTOM_STICKER_SETNAME") is not None:
         if is_anim:
-            return f"{get_var('CUSTOM_STICKER_SETNAME')}_{userid}_{pack}_anim"
+            return f"{getgvar('CUSTOM_STICKER_SETNAME')}_{userid}_{pack}_anim"
         else:
-            return f"{get_var('CUSTOM_STICKER_SETNAME')}_{userid}_{pack}"
+            return f"{getgvar('CUSTOM_STICKER_SETNAME')}_{userid}_{pack}"
     elif is_anim:
         return f"Technot_{userid}_{pack}_anim"
     elif is_vid:
@@ -86,13 +86,13 @@ def char_is_emoji(character):
 
 
 def pack_nick(username, pack, is_anim, is_vid):
-    if get_var("CUSTOM_STICKER_PACKNAME") is not None:
+    if getgvar("CUSTOM_STICKER_PACKNAME") is not None:
         if is_anim:
-            return f"{get_var('CUSTOM_STICKER_PACKNAME')} Vol.{pack} (Animated)"
+            return f"{getgvar('CUSTOM_STICKER_PACKNAME')} Vol.{pack} (Animated)"
         elif is_vid:
-            return f"{get_var('CUSTOM_STICKER_PACKNAME')} Vol.{pack} (Video)"
+            return f"{getgvar('CUSTOM_STICKER_PACKNAME')} Vol.{pack} (Video)"
         else:
-            return f"{get_var('CUSTOM_STICKER_PACKNAME')} Vol.{pack}"
+            return f"{getgvar('CUSTOM_STICKER_PACKNAME')} Vol.{pack}"
     elif is_anim:
         return f"@{username} Vol.{pack} (Animated)"
     elif is_vid:

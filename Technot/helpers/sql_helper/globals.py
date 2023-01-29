@@ -18,7 +18,7 @@ class Globals(BASE):
 Globals.__table__.create(checkfirst=True)
 
 
-def get_var(variable):
+def getgvar(variable):
     try:
         return (
             SESSION.query(Globals)
@@ -32,15 +32,15 @@ def get_var(variable):
         SESSION.close()
 
 
-def set_var(variable, value):
+def setgvar(variable, value):
     if SESSION.query(Globals).filter(Globals.variable == str(variable)).one_or_none():
-        del_var(variable)
+        delgvar(variable)
     adder = Globals(str(variable), value)
     SESSION.add(adder)
     SESSION.commit()
 
 
-def del_var(variable):
+def delgvar(variable):
     rem = (
         SESSION.query(Globals)
         .filter(Globals.variable == str(variable))

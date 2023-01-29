@@ -11,7 +11,7 @@ from ..helpers.sql_helper.global_collection import (
     del_keyword_collectionlist,
     get_collectionlist_items,
 )
-from ..helpers.sql_helper.globals import set_var, del_var, get_var
+from ..helpers.sql_helper.globals import setgvar, delgvar, getgvar
 from . import BOTLOG, BOTLOG_CHATID, HEROKU_APP
 
 LOGS = logging.getLogger(__name__)
@@ -117,11 +117,11 @@ async def set_pmlog(event):
     "To update the your chat after restart or reload ."
     input_str = event.pattern_match.group(1)
     if input_str == "off":
-        if get_var("restartupdate") is None:
+        if getgvar("restartupdate") is None:
             return await eod(event, "__Notify was already disabled__")
-        del_var("restartupdate")
+        delgvar("restartupdate")
         return await eor(event, "__Notify was disabled successfully.__")
-    if get_var("restartupdate") is None:
-        set_var("restartupdate", "turn-oned")
+    if getgvar("restartupdate") is None:
+        setgvar("restartupdate", "turn-oned")
         return await eor(event, "__Notify was enabled successfully.__")
     await eod(event, "__Notify was already enabled.__")

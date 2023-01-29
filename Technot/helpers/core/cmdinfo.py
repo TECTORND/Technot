@@ -1,6 +1,7 @@
 from typing import Dict, List, Union
 
 from ..utils.extdl import install_pip
+from ..functions.functions import chlang
 
 try:
     from urlextract import URLExtract
@@ -28,11 +29,11 @@ def _format_about(
         return about
     tmp_chelp = ""
     if "header" in about and isinstance(about["header"], str):
-        tmp_chelp += f"__{about['header'].title()}__"
+        tmp_chelp += f"__{chlang({about['header'].title()})}__"
         del about["header"]
     if "description" in about and isinstance(about["description"], str):
         tmp_chelp += (
-            "\n\n**⚜ Description :**\n" f"__{get_data(about , 'description')}__"
+            "\n\n**⚜ Description :**\n" f"__{chlang({get_data(about , 'description')})}__"
         )
         del about["description"]
     if "flags" in about:

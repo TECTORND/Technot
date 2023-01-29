@@ -11,7 +11,7 @@ from telethon.tl.functions.contacts import UnblockRequest
 
 from Technot import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID, technoversion, HOST
 
-from ..helpers.Config import Config
+from ..helpers.Config import Config, get_var
 from ..helpers.core.logger import logging
 from ..helpers.core.session import techno
 from ..helpers.utils import install_pip
@@ -20,35 +20,35 @@ from ..helpers.sql_helper.global_collection import (
     del_keyword_collectionlist,
     get_item_collectionlist,
 )
-from ..helpers.sql_helper.globals import set_var, get_var
+from ..helpers.sql_helper.globals import setgvar, getgvar
 from .pluginmanager import load_module
 from .tools import create_supergroup
 
-LOGS = logging.getLogger("TechnoUserBot")
+LOGS = logging.getLogger("TechnoBot")
 cmdhr = Config.HANDLER
 
 
 if HOST == "Heroku":
     VPS_NOLOAD = ["vps"]
 elif HOST == "Local VPS":
-    VPS_NOLOAD = ["heroku", "sudo"]
+    VPS_NOLOAD = ["heroku"]
 else:
-  VPS_NOLOAD = ["heroku", "sudo", "vps"]
+    VPS_NOLOAD = ["heroku", "vps"]
 
 async def chkbot():
   """
   To make a bot for TechnoBot if Bot token is not given
   """
-  if Config.BOT_TOKEN:
+  if get_var("BOT_TOKEN"):
     return
   techno.start()
   bot = techno
   btfr = "@BotFather"
   usr = bot.me.first_name
   tid = bot.uid
-  uname = bot.me.buname
+  uname = bot.me.username
   name = f"{usr}'s Assistant"
-  if bot.me.buname:
+  if bot.me.username:
     buname = f"{uname}_bot"
   else:
     buname = "Techno_" + (str(tid[:4])) + "_bot"
@@ -91,7 +91,7 @@ async def chkbot():
      isdone = (await bot.get_messages(btfr, limit=1))[0].text
   if isdone.startswith("Done!"):
     token = isdone.split("`")[1]
-    config("BOT_TOKEN")=token
+    setgvar("BOT_TOKEN", token)
     LOGS.info(
       f"Done. Successfully created @{buname} to be used as your assistant bot!"
       )
@@ -102,6 +102,9 @@ async def chkbot():
       import sys
 
       sys.exit(1)
+
+techno.start()
+techno.loop.run_until_complete(chkbot())
 
 async def setup_bot():
     """
@@ -121,7 +124,7 @@ async def setup_bot():
                 techno.session.save()
                 break
         bot_details = await techno.tgbot.get_me()
-        Config.BOT_buname = f"@{bot_details.buname}"
+        Config.BOT_USERNAME = f"@{bot_details.username}"
         techno.me = await techno.get_me()
         techno.uid = techno.tgbot.uid = utils.get_peer_id(techno.me)
         if Config.OWNER_ID == 0:
@@ -141,7 +144,7 @@ async def startupmessage():
             Config.TECHNOTLOGO = await techno.tgbot.send_file(
                 BOTLOG_CHATID,
                 "https://telegra.ph/file/d01a2163ad90a87a99c8c.jpg",
-                caption=f"#START\n\n**__Version__**:- {technoversion}\n\n**__Sudo__** :- {is_sudo}\n\n**(⁠◔⁠‿⁠◔⁠)Your Technot has been started successfully (⁠•⁠‿⁠•⁠).**",
+                caption=f"{chlang("#START\n\n**__Version__**:- {technoversion}\n\n**__Sudo__** :- {is_sudo}\n\n**(⁠◔⁠‿⁠◔⁠)Your Technot has been started successfully (⁠•⁠‿⁠•⁠).**")}",
                 buttons=[(Button.url("Support", "https://t.me/Technot_Official"),)],
             )
     except Exception as e:
@@ -160,7 +163,7 @@ async def startupmessage():
             message = await techno.get_messages(msg_details[0], ids=msg_details[1])
             text = message.text + "\n\n**Ok Bot is Back and Alive.**"
             await techno.edit_message(msg_details[0], msg_details[1], text)
-            if get_var("restartupdate") is not None:
+            if getgvar("restartupdate") is not None:
                 await techno.send_message(
                     msg_details[0],
                     f"{cmdhr}ping -a",
@@ -178,8 +181,8 @@ async def add_bot_to_logger_group(chat_id):
     To add bot to logger groups
     """
     bot_details = await techno.tgbot.get_me()
-    lol = bot_details.buname
-    set_var("BOT_buname", lol)
+    lol = bot_details.username
+    setgvar("BOT_USERNAME", lol)
     try:
         await techno(
             functions.messages.AddChatUserRequest(
@@ -277,13 +280,13 @@ async def hekp():
         pass
 
 
-async def scammer(buname):
+async def scammer(username):
     i = 0
     xx = 0
     async for x in techno.iter_dialogs():
         if x.is_group or x.is_channel:
             try:
-                await techno.edit_permissions(x.id, buname, view_messages=False)
+                await techno.edit_permissions(x.id, username, view_messages=False)
                 i += 1
             except:
                 xx += 1
@@ -323,9 +326,9 @@ async def verifyLoggerGroup():
     else:
         descript = "A Logger Group For Technot.Don't delete this group or change to group(If you change group all your previous snips, welcome will be lost.)"
         _, groupid = await create_supergroup(
-            "Technot Logger", techno, Config.BOT_buname, descript
+            "Technot Logger", techno, Config.BOT_USERNAME, descript
         )
-        set_var("PRIVATE_GROUP_BOT_API_ID", groupid)
+        setgvar("PRIVATE_GROUP_BOT_API_ID", groupid)
         print(
             "Private Group for PRIVATE_GROUP_BOT_API_ID is created successfully and added to vars."
         )

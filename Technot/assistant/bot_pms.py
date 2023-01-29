@@ -24,7 +24,7 @@ from ..helpers.sql_helper.bot_pms_sql import (
     get_user_reply,
 )
 from ..helpers.sql_helper.bot_starters import add_starter_to_db, get_starter_details
-from ..helpers.sql_helper.globals import del_var, get_var
+from ..helpers.sql_helper.globals import delgvar, getgvar
 from ..helpers.sql_helper.idaddar import get_all_users
 from . import BOTLOG, BOTLOG_CHATID
 from .botmanagers import ban_user_from_bot
@@ -88,9 +88,9 @@ async def bot_start(event):
     my_last = user.last_name
     my_fullname = f"{my_first} {my_last}" if my_last else my_first
     my_username = f"@{user.username}" if user.username else my_mention
-    custompic = get_var("BOT_START_PIC") or None
+    custompic = getgvar("BOT_START_PIC") or None
     if chat.id != Config.OWNER_ID:
-        customstrmsg = get_var("START_TEXT") or None
+        customstrmsg = getgvar("START_TEXT") or None
         if customstrmsg is not None:
             buttons = [
                 (
@@ -541,9 +541,9 @@ def is_flood(uid: int) -> Optional[bool]:
 @techno.tgbot.on(CallbackQuery(data=re.compile(b"toggle_bot-antiflood_off$")))
 @check_owner
 async def settings_toggle(c_q: CallbackQuery):
-    if get_var("bot_antif") is None:
+    if getgvar("bot_antif") is None:
         return await c_q.answer("Bot Antiflood was already disabled.", alert=False)
-    del_var("bot_antif")
+    delgvar("bot_antif")
     await c_q.answer("Bot Antiflood disabled.", alert=False)
     await c_q.edit("BOT_ANTIFLOOD is now disabled !")
 
@@ -551,7 +551,7 @@ async def settings_toggle(c_q: CallbackQuery):
 @techno.bot_cmd(incoming=True, func=lambda e: e.is_private)
 @techno.bot_cmd(edited=True, func=lambda e: e.is_private)
 async def antif_on_msg(event):
-    if get_var("bot_antif") is None:
+    if getgvar("bot_antif") is None:
         return
     chat = await event.get_chat()
     if chat.id == Config.OWNER_ID:

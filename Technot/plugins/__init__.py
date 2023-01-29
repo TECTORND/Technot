@@ -16,7 +16,7 @@ from ..helpers.core.managers import eod, eor
 from ..helpers.core.session import techno
 from ..helpers import *
 from ..helpers.utils import _format, _technotools, _technoutils, install_pip, reply_id
-from ..helpers.sql_helper.globals import get_var
+from ..helpers.sql_helper.globals import getgvar
 
 # =================== CONSTANT ===================
 bot = techno

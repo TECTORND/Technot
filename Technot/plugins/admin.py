@@ -26,7 +26,7 @@ from ..helpers.core.logger import logging
 from ..helpers.core.managers import eod, eor
 from ..helpers import media_type
 from ..helpers.utils import _format, get_user_from_event
-from ..helpers.sql_helper.globals import get_var
+from ..helpers.sql_helper.globals import getgvar
 from ..helpers.sql_helper.mute_sql import is_muted, mute, unmute
 from . import BOTLOG, BOTLOG_CHATID, ban_pic, demote_pic, mute_pic, promote_pic
 
@@ -61,7 +61,7 @@ UNBAN_RIGHTS = ChatBannedRights(
     embed_links=None,
 )
 
-ADMIN_PIC = get_var("ADMIN_PIC")
+ADMIN_PIC = getgvar("ADMIN_PIC")
 if ADMIN_PIC:
     prmt_pic = ADMIN_PIC
 else:

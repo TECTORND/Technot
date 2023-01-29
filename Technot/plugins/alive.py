@@ -19,7 +19,7 @@ from ..helpers.Config import Config
 from ..helpers.core.managers import eor
 from ..helpers.functions import check_data_base_heal_th, get_readable_time, technoalive
 from ..helpers.utils import reply_id
-from ..helpers.sql_helper.globals import get_var
+from ..helpers.sql_helper.globals import getgvar
 from . import mention
 
 menu_category = "utils"
@@ -45,12 +45,12 @@ async def amireallyalive(event):
     end = datetime.now()
     ms = (end - start).microseconds / 1000
     _, check_sgnirts = check_data_base_heal_th()
-    ALIVE_TEXT = get_var("ALIVE_TEXT")
-    EMOJI = get_var("ALIVE_EMOJI") or "✥"
+    ALIVE_TEXT = getgvar("ALIVE_TEXT")
+    EMOJI = getgvar("ALIVE_EMOJI") or "✥"
     lal = list(EMOJI.split())
     EMOTES = random.choice(lal)
     sweetie_caption = (
-        "**⚜ Technot Is Online ⚜**\n\n" + f"{get_var('ALIVE_TEMPLATE')}"
+        "**⚜ Technot Is Online ⚜**\n\n" + f"{getgvar('ALIVE_TEMPLATE')}"
     )
     caption = sweetie_caption.format(
         ALIVE_TEXT=ALIVE_TEXT,
@@ -93,16 +93,16 @@ async def aamjlive(event):
     end = datetime.now()
     ms = (end - start).microseconds / 1000
     _, check_sgnirts = check_data_base_heal_th()
-    ALI_T = get_var("ALIVE_TEXT")
+    ALI_T = getgvar("ALIVE_TEXT")
     if ALI_T is None:
       ALIVE_TEXT = "**__MY BOT IS RUNNING PERFECTLY__**"
     else:
       ALIVE_TEXT = ALI_T
-    EMOJI = get_var("ALIVE_EMOJI") or "✥"
+    EMOJI = getgvar("ALIVE_EMOJI") or "✥"
     lal = list(EMOJI.split())
     EMOTES = random.choice(lal)
     ALIVEPIC="https://telegra.ph/file/ac1541810568b41eb57d5.jpg"
-    ALT = get_var("ALIVE_TEMPLATE")
+    ALT = getgvar("ALIVE_TEMPLATE")
     if ALT is None:
       ALIVE_TEMPLATE = "╔───*.·:·.✧✦✧.·:·.*────╗\n"
       ALIVE_TEMPLATE += f"┣━ ⁭⁫{EMOTES} Sƚαƚυʂ : `{check_sgnirts}`\n"
@@ -131,7 +131,7 @@ async def aamjlive(event):
         dbhealth=check_sgnirts,
         ping=ms,
     )
-    ALIVE_PIC=get_var("ALIVE_PIC")
+    ALIVE_PIC=getgvar("ALIVE_PIC")
     if not ALIVE_PIC:
       await eor(technoevent, caption)
       await event.delete()
@@ -174,7 +174,7 @@ async def amireallyalive(event):
     "A kind of showing bot details by your inline bot"
     reply_to_id = await reply_id(event)
     uptime = await get_readable_time((time.time() - StartTime))
-    a = get_var("ALIVE_EMOJI") or "✥"
+    a = getgvar("ALIVE_EMOJI") or "✥"
     kiss = list(a.split())
     EMOJI = random.choice(kiss)
     techno_caption = "**Technot Is Online**\n\n"

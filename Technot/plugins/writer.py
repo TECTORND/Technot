@@ -7,7 +7,7 @@ from telethon.tl.functions.users import GetFullUserRequest
 from ..helpers.core.managers import eod, eor
 from ..helpers.functions import deEmojify, higlighted_text
 from ..helpers.tools import async_searcher, text_set
-from ..helpers.sql_helper.globals import set_var, get_var
+from ..helpers.sql_helper.globals import setgvar, getgvar
 from . import BOTLOG, BOTLOG_CHATID, techno, reply_id
 
 menu_category = "tools"
@@ -271,10 +271,10 @@ def notebook_values(page, font):
 async def write_page(event):
     """Write down your text in notebook."""
     cmd = event.pattern_match.group(1)
-    font = get_var("NOTEBOOK_FONT") or "Caveat"
-    page = get_var("NOTEBOOK_PAGE") or "spiral"
-    log = get_var("NOTEBOOK_LOG") or "Off"
-    foreground = get_var("NOTEBOOK_PEN_COLOR") or "black"
+    font = getgvar("NOTEBOOK_FONT") or "Caveat"
+    page = getgvar("NOTEBOOK_PAGE") or "spiral"
+    log = getgvar("NOTEBOOK_LOG") or "Off"
+    foreground = getgvar("NOTEBOOK_PEN_COLOR") or "black"
     if cmd == "write":
         text = event.pattern_match.group(2)
         rtext = await event.get_reply_message()
@@ -381,7 +381,7 @@ async def notebook_conf(event):
         for i, each in enumerate(Pages.keys(), start=1):
             cap += f"**{i}.**  `{each}`\n"
         if input_str and input_str in Pages.keys():
-            set_var("NOTEBOOK_PAGE", Pages[input_str])
+            setgvar("NOTEBOOK_PAGE", Pages[input_str])
             if os.path.exists("temp/nbpage.jpg"):
                 os.remove("temp/nbpage.jpg")
             return await eod(
@@ -393,7 +393,7 @@ async def notebook_conf(event):
         for i, each in enumerate(Fonts, start=1):
             cap += f"**{i}.**  `{each}`\n"
         if input_str and input_str in Fonts:
-            set_var("NOTEBOOK_FONT", input_str)
+            setgvar("NOTEBOOK_FONT", input_str)
             if os.path.exists("temp/nbfont.ttf"):
                 os.remove("temp/nbfont.ttf")
             return await eod(
@@ -405,7 +405,7 @@ async def notebook_conf(event):
         for i, each in enumerate(Colors, start=1):
             cap += f"**{i}.**  `{each}`\n"
         if input_str and input_str in Colors:
-            set_var("NOTEBOOK_PEN_COLOR", input_str)
+            setgvar("NOTEBOOK_PEN_COLOR", input_str)
             if os.path.exists("temp/nbfont.ttf"):
                 os.remove("temp/nbfont.ttf")
             return await eod(
@@ -421,7 +421,7 @@ async def notebook_conf(event):
             )
         cap = "**Available log option are:-**\n\n1. `On`\n2. `Off`"
         if input_str and input_str in ["On", "Off"]:
-            set_var("NOTEBOOK_LOG", input_str)
+            setgvar("NOTEBOOK_LOG", input_str)
             return await eod(
                 event,
                 f"**Notebook pen color Successfully changed to : **`{input_str}`",

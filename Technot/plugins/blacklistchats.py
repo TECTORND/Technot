@@ -8,7 +8,7 @@ from Technot.helpers.core.logger import logging
 from ..helpers.core.data import blacklist_chats_list
 from ..helpers.core.managers import eod, eor
 from ..helpers.sql_helper import global_collectionjson as sql
-from ..helpers.sql_helper.globals import set_var, del_var, get_var
+from ..helpers.sql_helper.globals import setgvar, delgvar, getgvar
 
 menu_category = "tools"
 
@@ -31,9 +31,9 @@ async def chat_blacklist(event):
     input_str = event.pattern_match.group(1)
     blkchats = blacklist_chats_list()
     if input_str == "on":
-        if get_var("blacklist_chats") is not None:
+        if getgvar("blacklist_chats") is not None:
             return await eod(event, "__Already it was turned on.__")
-        set_var("blacklist_chats", "true")
+        setgvar("blacklist_chats", "true")
         text = "__From now ChatBlackList ON, your Technot doesn't work in that chats which u add in BlackList __.Stored in database."
         if len(blkchats) != 0:
             text += (
@@ -49,8 +49,8 @@ async def chat_blacklist(event):
             event,
             text,
         )
-    if get_var("blacklist_chats") is not None:
-        del_var("blacklist_chats")
+    if getgvar("blacklist_chats") is not None:
+        delgvar("blacklist_chats")
         text = "__Your Technot is as free as a bird.It works in Every Chat .__"
         if len(blkchats) != 0:
             text += (

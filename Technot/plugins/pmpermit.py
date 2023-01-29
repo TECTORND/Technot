@@ -15,7 +15,7 @@ from ..helpers.utils import _format, get_user_from_event, reply_id
 from ..helpers.sql_helper import global_collectionjson as sql
 from ..helpers.sql_helper import global_list as sqllist
 from ..helpers.sql_helper import pmpermit_sql
-from ..helpers.sql_helper.globals import set_var, del_var, get_var
+from ..helpers.sql_helper.globals import setgvar, delgvar, getgvar
 from . import mention
 
 
@@ -57,7 +57,7 @@ async def do_pm_permit_action(event, chat):  # sourcery no-metrics
     if str(chat.id) not in PM_WARNS:
         PM_WARNS[str(chat.id)] = 0
     try:
-        MAX_FLOOD_IN_PMS = int(get_var("MAX_FLOOD_IN_PMS") or 4)
+        MAX_FLOOD_IN_PMS = int(getgvar("MAX_FLOOD_IN_PMS") or 4)
     except (ValueError, TypeError):
         MAX_FLOOD_IN_PMS = 4
     totalwarns = MAX_FLOOD_IN_PMS + 1
@@ -72,7 +72,7 @@ async def do_pm_permit_action(event, chat):  # sourcery no-metrics
                 del PMMESSAGE_CACHE[str(chat.id)]
         except Exception as e:
             LOGS.info(str(e))
-        custompmblock = get_var("pmblock") or None
+        custompmblock = getgvar("pmblock") or None
         if custompmblock is not None:
             USER_BOT_WARN_ZERO = custompmblock.format(
                 mention=mention,
@@ -109,7 +109,7 @@ async def do_pm_permit_action(event, chat):  # sourcery no-metrics
             )
         except BaseException:
             return
-    custompmpermit = get_var("pmpermit_txt") or None
+    custompmpermit = getgvar("pmpermit_txt") or None
     if custompmpermit is not None:
         USER_BOT_NO_WARN = custompmpermit.format(
             mention=mention,
@@ -127,7 +127,7 @@ async def do_pm_permit_action(event, chat):  # sourcery no-metrics
             warns=warns,
             remwarns=remwarns,
         )
-    elif get_var("pmmenu") is None:
+    elif getgvar("pmmenu") is None:
         USER_BOT_NO_WARN = f"""__Hi__ {mention}__, I haven't approved you yet to personal message me. 
 You have {warns}/{totalwarns} warns until you get blocked by the TechnoUserBot.
 Choose an option from below to specify the reason of your message and wait for me to check it. __⬇️"""
@@ -135,15 +135,15 @@ Choose an option from below to specify the reason of your message and wait for m
         USER_BOT_NO_WARN = f"""__Hi__ {mention}__, I haven't approved you yet to personal message me.
 You have {warns}/{totalwarns} warns until you get blocked by the TechnoUserBot.
 --Don't spam my inbox. say reason and wait until my response.--"""
-    set_var("pmpermit_text", USER_BOT_NO_WARN)
+    setgvar("pmpermit_text", USER_BOT_NO_WARN)
     PM_WARNS[str(chat.id)] += 1
     try:
-        if get_var("pmmenu") is None:
+        if getgvar("pmmenu") is None:
             results = await event.client.inline_query(Config.BOT_USERNAME, "pmpermit")
             msg = await results[0].click(chat.id, reply_to=reply_to_id, hide_via=True)
         else:
             PM_IMG = (
-                get_var("PM_IMG")
+                getgvar("PM_IMG")
                 or "https://telegra.ph/file/69fa26f4659e377dea80e.jpg"
             )
             if PM_IMG == "OFF":
@@ -406,7 +406,7 @@ async def do_pm_spam_action(event, chat):
     incoming=True, func=lambda e: e.is_private, edited=False, forword=None
 )
 async def on_new_private_message(event):
-    if get_var("pmpermit") is None:
+    if getgvar("pmpermit") is None:
         return
     chat = await event.get_chat()
     if chat.bot or chat.verified:
@@ -446,7 +446,7 @@ async def on_new_private_message(event):
     outgoing=True, func=lambda e: e.is_private, edited=False, forword=None
 )
 async def you_dm_other(event):
-    if get_var("pmpermit") is None:
+    if getgvar("pmpermit") is None:
         return
     chat = await event.get_chat()
     if chat.bot or chat.verified:
@@ -638,15 +638,15 @@ async def pmpermit_on(event):
     "Turn on/off pmpermit."
     input_str = event.pattern_match.group(1)
     if input_str == "on":
-        if get_var("pmpermit") is None:
-            set_var("pmpermit", "true")
+        if getgvar("pmpermit") is None:
+            setgvar("pmpermit", "true")
             await eod(
                 event, "__Pmpermit has been enabled for your account successfully.__"
             )
         else:
             await eod(event, "__Pmpermit is already enabled for your account__")
-    elif get_var("pmpermit") is not None:
-        del_var("pmpermit")
+    elif getgvar("pmpermit") is not None:
+        delgvar("pmpermit")
         await eod(event, "__Pmpermit has been disabled for your account successfully__")
     else:
         await eod(event, "__Pmpermit is already disabled for your account__")
@@ -664,16 +664,16 @@ async def pmpermit_on(event):
     "Turn on/off pmmenu."
     input_str = event.pattern_match.group(1)
     if input_str == "off":
-        if get_var("pmmenu") is None:
-            set_var("pmmenu", "false")
+        if getgvar("pmmenu") is None:
+            setgvar("pmmenu", "false")
             await eod(
                 event,
                 "__Pmpermit Menu has been disabled for your account successfully.__",
             )
         else:
             await eod(event, "__Pmpermit Menu is already disabled for your account__")
-    elif get_var("pmmenu") is not None:
-        del_var("pmmenu")
+    elif getgvar("pmmenu") is not None:
+        delgvar("pmmenu")
         await eod(
             event, "__Pmpermit Menu has been enabled for your account successfully__"
         )
@@ -694,7 +694,7 @@ async def pmpermit_on(event):
 )
 async def approve_p_m(event):  # sourcery no-metrics
     "To approve user to pm"
-    if get_var("pmpermit") is None:
+    if getgvar("pmpermit") is None:
         return await eod(
             event,
             f"__Turn on pmpermit by doing __`{cmdhd}pmguard on` __for working of this plugin__",
@@ -771,7 +771,7 @@ async def approve_p_m(event):  # sourcery no-metrics
 )
 async def tapprove_pm(event):  # sourcery no-metrics
     "Temporarily approve user to pm"
-    if get_var("pmpermit") is None:
+    if getgvar("pmpermit") is None:
         return await eor(
             event,
             f"__Turn on pmpermit by doing __`{cmdhd}pmguard on` __for working of this plugin__",
@@ -854,7 +854,7 @@ async def tapprove_pm(event):  # sourcery no-metrics
 )
 async def disapprove_p_m(event):
     "To disapprove user to direct message you."
-    if get_var("pmpermit") is None:
+    if getgvar("pmpermit") is None:
         return await eod(
             event,
             f"__Turn on pmpermit by doing __`{cmdhd}pmguard on` __for working of this plugin__",
@@ -908,7 +908,7 @@ async def disapprove_p_m(event):
 )
 async def block_p_m(event):
     "To block user to direct message you."
-    if get_var("pmpermit") is None:
+    if getgvar("pmpermit") is None:
         return await eod(
             event,
             f"__Turn on pmpermit by doing __`{cmdhd}pmguard on` __for working of this plugin__",
@@ -947,7 +947,7 @@ async def block_p_m(event):
     sql.add_collection("pmwarns", PM_WARNS, {})
     sql.add_collection("pmmessagecache", PMMESSAGE_CACHE, {})
     await event.client(functions.contacts.BlockRequest(user.id))
-    ABS = get_var("ABUSE")
+    ABS = getgvar("ABUSE")
     if ABS == "ON":
       await eor(event, "**__ GO AND FUCK YOURSELF__** **`BLOCKED`**")
     else:
@@ -970,7 +970,7 @@ async def block_p_m(event):
 )
 async def block_p_m(event):
     "To block user to direct message you."
-    if get_var("pmpermit") is None:
+    if getgvar("pmpermit") is None:
         return await eod(
             event,
             f"__Turn on pmpermit by doing __`{cmdhd}pmguard on` __for working of this plugin__",
@@ -1026,7 +1026,7 @@ async def block_p_m(event):
 )
 async def unblock_pm(event):
     "To unblock a user."
-    if get_var("pmpermit") is None:
+    if getgvar("pmpermit") is None:
         return await eod(
             event,
             f"__Turn on pmpermit by doing __`{cmdhd}pmguard on` __for working of this plugin__",
@@ -1058,7 +1058,7 @@ async def unblock_pm(event):
 )
 async def approve_p_m(event):
     "To see list of approved users."
-    if get_var("pmpermit") is None:
+    if getgvar("pmpermit") is None:
         return await eod(
             event,
             f"__Turn on pmpermit by doing __`{cmdhd}pmguard on` __to work this plugin__",

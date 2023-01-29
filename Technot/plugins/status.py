@@ -6,7 +6,7 @@ from telethon.tl import functions
 from Technot import techno
 
 from ..helpers.core.managers import eod, eor
-from ..helpers.sql_helper.globals import set_var, get_var
+from ..helpers.sql_helper.globals import setgvar, getgvar
 
 menu_category = "utils"
 
@@ -45,10 +45,10 @@ async def pussy(event):
             await eor(event, "**Changed profile to OffLine.**")
     os.remove(photo)
     first_name = user.first_name
-    set_var("my_first_name", first_name)
+    setgvar("my_first_name", first_name)
     last_name = user.last_name
     if last_name:
-        set_var("my_last_name", last_name)
+        setgvar("my_last_name", last_name)
     tag_name = OFFLINE_TAG
     await event.client(
         functions.account.UpdateProfileRequest(
@@ -85,8 +85,8 @@ async def techno(event):
         await eor(event, str(e))
     else:
         await eor(event, "**Changed profile to Online.**")
-    first_name = get_var("my_first_name")
-    last_name = get_var("my_last_name") or ""
+    first_name = getgvar("my_first_name")
+    last_name = getgvar("my_last_name") or ""
     await event.client(
         functions.account.UpdateProfileRequest(
             last_name=last_name, first_name=first_name

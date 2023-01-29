@@ -18,13 +18,13 @@ from Technot import techno
 
 from ..helpers.Config import Config
 from ..helpers.core.logger import logging
-from ..helpers.sql_helper.globals import get_var
+from ..helpers.sql_helper.globals import getgvar
 from . import BOTLOG, BOTLOG_CHATID, eor
 
 LOGS = logging.getLogger(__name__)
 menu_category = "extra"
 
-DEFAULT_BIO = get_var("DEFAULT_BIO")
+DEFAULT_BIO = getgvar("DEFAULT_BIO")
 BIO_PREFIX = Config.BIO_PREFIX
 LASTFM_API = Config.LASTFM_API
 LASTFM_SECRET = Config.LASTFM_SECRET

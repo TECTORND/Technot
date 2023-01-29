@@ -22,7 +22,7 @@ from .functions.utube import (
     ytsearch_data,
 )
 from ...plugins import ALIVE_NAME, USERID, Techno_grp, mention
-from ..sql_helper.globals import get_var
+from ..sql_helper.globals import getgvar
 from . import CMD_INFO, GRP_INFO, PLG_INFO, check_owner
 from .logger import logging
 
@@ -81,8 +81,8 @@ async def on_plug_in_callback_query_handler(event):
 
 
 def main_menu():
-    tol = get_var("BOT_USERNAME")
-    text = f"⚜ {mention}  ⚜"
+    tol = getgvar("BOT_USERNAME")
+    text = f"⚜ {mention}  ⚜'s Technot help menu"
     buttons = [
         [custom.Button.inline("👨‍💻 Info 👨‍💻", data="check")],
         [
@@ -115,14 +115,14 @@ def paginate_help(
     category_pgno=0,
 ):  # sourcery no-metrics
     try:
-        number_of_rows = int(get_var("ROWS_IN_HELP") or 7)
+        number_of_rows = int(getgvar("ROWS_IN_HELP") or 7)
     except (ValueError, TypeError):
         number_of_rows = 7
     try:
-        number_of_cols = int(get_var("COLUMNS_IN_HELP") or 2)
+        number_of_cols = int(getgvar("COLUMNS_IN_HELP") or 2)
     except (ValueError, TypeError):
         number_of_cols = 2
-    LOL_EMOJI = get_var("HELP_EMOJI") or "💝"
+    LOL_EMOJI = getgvar("HELP_EMOJI") or "💝"
     lal = [x for x in LOL_EMOJI.split()]
     HELP_EMOJI = random.choice(lal)
     helpable_plugins = [p for p in loaded_plugins if not p.startswith("_")]
@@ -253,7 +253,7 @@ async def inline_handler(event):  # sourcery no-metrics
                     Button.url("Repo", "https://github.com/TeamTechnot/Technot"),
                 ),
             ]
-            ALIVE_PIC = get_var("ALIVE_PIC")
+            ALIVE_PIC = getgvar("ALIVE_PIC")
             if ALIVE_PIC is None:
                 I_IMG = "https://telegra.ph/file/dae1674ae3780ed6d123f.jpg"
             else:
@@ -280,8 +280,8 @@ async def inline_handler(event):  # sourcery no-metrics
                 )
             await event.answer([result] if result else None)
         if query.startswith("**⚜ Technot"):
-            grp_username = get_var("GROUP_USERNAME") or "Technot_Support"
-            chnl_username = get_var("CHANNEL_USERNAME") or "Technot_Updates"
+            grp_username = getgvar("GROUP_USERNAME") or "Technot_Support"
+            chnl_username = getgvar("CHANNEL_USERNAME") or "Technot_Updates"
             buttons = [
                 (Button.url(f"{ALIVE_NAME}", f"tg://openmessage?user_id={USERID}"),),
                 (
@@ -289,7 +289,7 @@ async def inline_handler(event):  # sourcery no-metrics
                     Button.url("Channel", f"t.me/{chnl_username}"),
                 ),
             ]
-            ALIVE_PIC = get_var("ALIVE_PIC")
+            ALIVE_PIC = getgvar("ALIVE_PIC")
             if ALIVE_PIC is None:
                 IMG = "https://telegra.ph/file/dae1674ae3780ed6d123f.jpg"
             else:
@@ -320,7 +320,7 @@ async def inline_handler(event):  # sourcery no-metrics
                 title="Repository",
                 text=f"**⚜ Technical Af Technot ⚜**",
                 buttons=[
-                    [Button.url("♥️ Tutorial ♥", "https://youtu.be/CH_KO1wim2o")],
+                    [Button.url("♥️ Tutorial ♥", "https://youtu.be/D9CFYRUmoDI")],
                     [Button.url("📍 𝚁𝚎𝚙𝚘 📍", "https://github.com/TeamTechnot/Technot")],
                     [
                         Button.url(
@@ -507,7 +507,7 @@ async def inline_handler(event):  # sourcery no-metrics
             else:
                 json.dump(newhide, open(hide, "w"))
         elif string == "help":
-            oso = get_var("HELP_IMG")
+            oso = getgvar("HELP_IMG")
             if oso is None:
                 help_pic = "https://telegra.ph/file/d01a2163ad90a87a99c8c.jpg"
             else:
@@ -638,7 +638,7 @@ async def inline_handler(event):  # sourcery no-metrics
                 Button.inline(text="👨‍💻 Open PM Menu 💝", data="show_pmpermit_options"),
             ]
             PM_IMG = (
-                get_var("PM_IMG")
+                getgvar("PM_IMG")
                 or "https://telegra.ph/file/69fa26f4659e377dea80e.jpg"
             )
             if PM_IMG == "OFF":
@@ -647,7 +647,7 @@ async def inline_handler(event):  # sourcery no-metrics
                 techno = [x for x in PM_IMG.split()]
                 PIC = list(techno)
                 TECHNO_IMG = random.choice(PIC)
-            query = get_var("pmpermit_text")
+            query = getgvar("pmpermit_text")
             if TECHNO_IMG and TECHNO_IMG.endswith((".jpg", ".jpeg", ".png")):
                 result = builder.photo(
                     TECHNO_IMG,

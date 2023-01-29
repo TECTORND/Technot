@@ -5,7 +5,7 @@ from datetime import datetime
 
 from ..helpers.core.managers import eor
 from ..helpers.functions import get_readable_time
-from ..helpers.sql_helper.globals import get_var
+from ..helpers.sql_helper.globals import getgvar
 from . import StartTime, techno, mention
 
 menu_category = "tools"
@@ -41,9 +41,9 @@ async def ping(event):
         technoevent = await eor(event, "<b><i>⚡ Pong! ⚡< b></i>", "html")
         end = datetime.now()
         ms = (end - start).microseconds / 1000
-        ping_temp = (get_var("PING_TEMPLATE")) or "Uptime = {uptime}\nPing = {ms}"
+        ping_temp = (getgvar("PING_TEMPLATE")) or "Uptime = {uptime}\nPing = {ms}"
         sweetie = (
-            get_var("PING_IMG")
+            getgvar("PING_IMG")
             or "https://telegra.ph/file/e15a2fe1430358e26713c.jpg"
         )
         caption = ping_temp.format(

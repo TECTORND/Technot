@@ -18,7 +18,7 @@ from ..helpers.core.managers import eod, eor
 from ..helpers.utils import _format
 from ..helpers.utils.events import get_user_from_event
 from ..helpers.sql_helper import gban_sql_helper
-from ..helpers.sql_helper.globals import get_var
+from ..helpers.sql_helper.globals import getgvar
 from ..helpers.sql_helper.mute_sql import is_muted, mute, unmute
 from . import BOTLOG, BOTLOG_CHATID, admin_groups, gban_pic, mention
 
@@ -260,7 +260,7 @@ async def lolgban(event):  # sourcery no-metrics
         gban_sql_helper.gban(
             user.id, get_display_name(user), start_date, user.username, reason
         )
-        a = get_var("ABUSE_PIC")
+        a = getgvar("ABUSE_PIC")
         if a is not None:
             b = a.split(" ")
             c = []
@@ -275,7 +275,7 @@ async def lolgban(event):  # sourcery no-metrics
         ogmsg = f"[{user.first_name}](tg://user?id={user.id}) **Is now GBanned by** {mention} **in**  `{chats}`  **Chats!! 😏**\n\n**📍 Also Added to Gban Watch!!**"
         if reason != "":
             ogmsg += f"\n**🔰 Reason :**  `{reason}`"
-        if get_var("ABUSE") == "ON":
+        if getgvar("ABUSE") == "ON":
             try:
                 await event.client.send_file(event.chat_id, gbpic, caption=gmsg)
             except Exception:

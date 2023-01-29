@@ -4,7 +4,7 @@ from telethon.errors import FloodWaitError, MessageNotModifiedError
 from telethon.events import CallbackQuery
 
 from ..Config import Config
-from ..sql_helper.globals import get_var
+from ..sql_helper.globals import getgvar
 
 
 def check_owner(func):
@@ -21,7 +21,7 @@ def check_owner(func):
                 pass
         else:
             HELP_TEXT = (
-                get_var("HELP_TEXT")
+                getgvar("HELP_TEXT")
                 or "Only My Master can Access This Button !!\n\nDeploy your own @Technot_Official."
             )
             await c_q.answer(

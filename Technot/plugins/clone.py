@@ -10,14 +10,14 @@ from . import (
     BOTLOG_CHATID,
     eod,
     get_user_from_event,
-    get_var,
+    getgvar,
     techno,
 )
 
 menu_category = "utils"
-DEFAULTUSER = get_var("FIRST_NAME") or ALIVE_NAME
+DEFAULTUSER = getgvar("FIRST_NAME") or ALIVE_NAME
 DEFAULTUSERBIO = (
-    get_var("DEFAULT_BIO") or "I Am Techno Because I Am A User Of @Technot_Official"
+    getgvar("DEFAULT_BIO") or "I Am Techno Because I Am A User Of @Technot_Official"
 )
 
 
@@ -77,7 +77,7 @@ async def clone(event):
 async def revert(event):
     "To reset your original details"
     firstname = DEFAULTUSER
-    lastname = get_var("LAST_NAME") or ""
+    lastname = getgvar("LAST_NAME") or ""
     bio = DEFAULTUSERBIO
     await event.client(
         functions.photos.DeletePhotosRequest(

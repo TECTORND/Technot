@@ -15,7 +15,7 @@ from ..helpers.sql_helper.chatbot_sql import (
     remove_all_users,
     remove_users,
 )
-from ..helpers.sql_helper.globals import get_var
+from ..helpers.sql_helper.globals import getgvar
 
 menu_category = "fun"
 
@@ -198,7 +198,7 @@ async def list_chatbot(event):  # sourcery no-metrics
 @techno.techno_cmd(incoming=True, edited=False)
 async def ai_reply(event):
     if is_added(event.chat_id, event.sender_id) and (event.message.text):
-        AI_LANG = get_var("AI_LANG") or "en"
+        AI_LANG = getgvar("AI_LANG") or "en"
         master_name = get_display_name(await event.client.get_me())
         try:
             response = await rs_client.get_ai_response(

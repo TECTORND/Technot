@@ -9,7 +9,7 @@ from ..helpers.core.managers import eod
 from ..helpers.tools import media_type
 from ..helpers.utils import _format
 from ..helpers.sql_helper import no_log_pms_sql
-from ..helpers.sql_helper.globals import set_var, get_var
+from ..helpers.sql_helper.globals import setgvar, getgvar
 from . import BOTLOG, BOTLOG_CHATID
 
 LOGS = logging.getLogger(__name__)
@@ -33,7 +33,7 @@ LOG_CHATS_ = LOG_CHATS()
 async def monito_p_m_s(event):  # sourcery no-metrics
     if Config.PM_LOGGER_GROUP_ID == -100:
         return
-    if get_var("PMLOG") and get_var("PMLOG") == "false":
+    if getgvar("PMLOG") and getgvar("PMLOG") == "false":
         return
     sender = await event.get_sender()
     if not sender.bot:
@@ -76,7 +76,7 @@ async def log_tagged_messages(event):
     hmm = await event.get_chat()
     from .afk import AFK_
 
-    if get_var("GRPLOG") and get_var("GRPLOG") == "false":
+    if getgvar("GRPLOG") and getgvar("GRPLOG") == "false":
         return
     if (
         (no_log_pms_sql.is_approved(hmm.id))
@@ -208,7 +208,7 @@ async def set_pmlog(event):
         h_type = False
     elif input_str == "on":
         h_type = True
-    if get_var("PMLOG") and get_var("PMLOG") == "false":
+    if getgvar("PMLOG") and getgvar("PMLOG") == "false":
         PMLOG = False
     else:
         PMLOG = True
@@ -216,10 +216,10 @@ async def set_pmlog(event):
         if h_type:
             await event.edit("`Pm logging is already enabled`")
         else:
-            set_var("PMLOG", h_type)
+            setgvar("PMLOG", h_type)
             await event.edit("`Pm logging is disabled`")
     elif h_type:
-        set_var("PMLOG", h_type)
+        setgvar("PMLOG", h_type)
         await event.edit("`Pm logging is enabled`")
     else:
         await event.edit("`Pm logging is already disabled`")
@@ -250,7 +250,7 @@ async def set_grplog(event):
         h_type = False
     elif input_str == "on":
         h_type = True
-    if get_var("GRPLOG") and get_var("GRPLOG") == "false":
+    if getgvar("GRPLOG") and getgvar("GRPLOG") == "false":
         GRPLOG = False
     else:
         GRPLOG = True
@@ -258,10 +258,10 @@ async def set_grplog(event):
         if h_type:
             await event.edit("`Group logging is already enabled`")
         else:
-            set_var("GRPLOG", h_type)
+            setgvar("GRPLOG", h_type)
             await event.edit("`Group logging is disabled`")
     elif h_type:
-        set_var("GRPLOG", h_type)
+        setgvar("GRPLOG", h_type)
         await event.edit("`Group logging is enabled`")
     else:
         await event.edit("`Group logging is already disabled`")

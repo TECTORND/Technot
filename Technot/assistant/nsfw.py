@@ -8,7 +8,7 @@ from Technot import techno
 
 from ..helpers.Config import Config
 from ..helpers.core.logger import logging
-from ..helpers.sql_helper.globals import set_var, del_var
+from ..helpers.sql_helper.globals import setgvar, delgvar
 
 LOGS = logging.getLogger(__name__)
 
@@ -29,7 +29,7 @@ async def age_verification_true(event: CallbackQuery):
         )
     ]
     try:
-        set_var("ALLOW_NSFW", "true")
+        setgvar("ALLOW_NSFW", "true")
         await event.edit(
             text="Done Now U Can Use NSFW Plugin \n\nTo Disable Use .deldb ALLOW_NSFW",
             file="https://telegra.ph/file/85f3071c31279bcc280ef.jpg",
@@ -55,7 +55,7 @@ async def age_verification_false(event: CallbackQuery):
         )
     ]
     try:
-        del_var("ALLOW_NSFW")
+        delgvar("ALLOW_NSFW")
         await event.edit(
             text="GO AWAY KID !",
             file="https://telegra.ph/file/1140f16a883d35224e6a1.jpg",
