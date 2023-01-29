@@ -18,7 +18,7 @@ class Config(object):
     LOGGER = True
 
     # mandatory
-    API_ID = ((
+    APP_ID = ((
         sys.argv[1]) if len(sys.argv) > 1 else config("API_ID", default=6, cast=int)
     )
     API_HASH = (
@@ -186,7 +186,7 @@ def get_var(variable):
   from .sql_helper.globals import getgvar
   import os
   if os.getenv(variable) != (0 or None):
-    return Config.variable
+    return os.getenv(variable)
   elif getgvar(variable) != (None or 0):
     return getgvar(variable)
   else:
